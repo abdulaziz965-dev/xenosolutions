@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import emailjs from "@emailjs/browser";
-import logo from './logo.png'
-import card from './card.jpeg'
-import Neph from './Neph.jpg'
-import { img } from 'framer-motion/m';
-import hyde from './hyde.png'
-import rescuebite from './rescuebite.png'
-import triplens from './triplens.png'
 import { Link } from "react-router-dom";
+
+const logo = '/logo.png'
+const card = '/card.jpeg'
+const Neph = '/Neph.jpg'
+const hyde = '/hyde.png'
+const rescuebite = '/rescuebite.png'
+const triplens = '/triplens.png'
 
 type ThemeMode = 'dark' | 'light'
 
