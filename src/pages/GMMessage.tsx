@@ -135,12 +135,7 @@ export default function GMMessage() {
         </h2>
 
         <p style={{ color: "#aaa", lineHeight: 1.9 }}>
-          Mohammed Fazlur Rahman is an accomplished industry professional with
-          over 30 years of experience across Qatar, the United Kingdom, Oman,
-          the UAE, Saudi Arabia, and India. Holding an MSc from Wales (UK) and
-          an MBA from Coventry (UK), he has built a distinguished career in
-          business leadership, strategic planning, customer acquisition,
-          operations management, and organizational development.
+          Mohammed Fazlur Rahman is an accomplished industry professional with over 30 years of industry experience, including more than 16 years in Qatar, Mohammed Fazlur Rahman has established himself as a respected business leader with extensive international exposure across the United Kingdom, Oman, the UAE, Saudi Arabia, and India. Holding an MSc from Wales (UK) and an MBA from Coventry (UK), he specializes in business leadership, strategic planning, customer acquisition, operations management, and organizational development.
         </p>
 
         <p
