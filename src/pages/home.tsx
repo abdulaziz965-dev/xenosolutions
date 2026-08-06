@@ -209,7 +209,7 @@ function CaseStudyModal({ id, onClose }: { id: keyof typeof caseStudies; onClose
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+      className="fixed inset-0 z-100 flex items-center justify-center p-4 md:p-8"
       style={{ background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(12px)' }}
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
@@ -255,7 +255,7 @@ function CaseStudyModal({ id, onClose }: { id: keyof typeof caseStudies; onClose
         <div className="px-8 py-8 space-y-8">
           {/* Overview */}
           <div>
-            <h3 className="font-mono text-xs tracking-widest mb-3" style={{ color: '#555' }}>OVERVIEW</h3>
+            <h3 className="font-mono text-xs tracking-widest mb-3" style={{ color: '#ffffff' }}>OVERVIEW</h3>
             <p className="font-body text-sm leading-relaxed" style={{ color: '#ccc' }}>{study.overview}</p>
           </div>
 
@@ -264,11 +264,11 @@ function CaseStudyModal({ id, onClose }: { id: keyof typeof caseStudies; onClose
           {/* Challenge + Solution */}
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-mono text-xs tracking-widest mb-3" style={{ color: '#555' }}>THE CHALLENGE</h3>
+              <h3 className="font-mono text-xs tracking-widest mb-3" style={{ color: '#ffffff' }}>THE CHALLENGE</h3>
               <p className="font-body text-sm leading-relaxed" style={{ color: '#ccc' }}>{study.challenge}</p>
             </div>
             <div>
-              <h3 className="font-mono text-xs tracking-widest mb-3" style={{ color: '#555' }}>THE SOLUTION</h3>
+              <h3 className="font-mono text-xs tracking-widest mb-3" style={{ color: '#ffffff' }}>THE SOLUTION</h3>
               <p className="font-body text-sm leading-relaxed" style={{ color: '#ccc' }}>{study.solution}</p>
             </div>
           </div>
@@ -277,7 +277,7 @@ function CaseStudyModal({ id, onClose }: { id: keyof typeof caseStudies; onClose
 
           {/* Highlights */}
           <div>
-            <h3 className="font-mono text-xs tracking-widest mb-4" style={{ color: '#555' }}>KEY HIGHLIGHTS</h3>
+            <h3 className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>KEY HIGHLIGHTS</h3>
             <ul className="space-y-3">
               {study.highlights.map((h, i) => (
                 <li key={i} className="flex items-start gap-3">
@@ -292,7 +292,7 @@ function CaseStudyModal({ id, onClose }: { id: keyof typeof caseStudies; onClose
 
           {/* Stack */}
           <div>
-            <h3 className="font-mono text-xs tracking-widest mb-4" style={{ color: '#555' }}>TECH STACK</h3>
+            <h3 className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>TECH STACK</h3>
             <div className="flex flex-wrap gap-2">
               {study.stack.map(t => (
                 <span key={t} className="font-mono text-xs px-3 py-1.5 rounded-full text-white"
@@ -355,9 +355,10 @@ function Nav({
     { label: 'Contact', href: '#contact', type: 'anchor' as const },
     { label: 'Privacy Policy', href: '/privacy-policy', type: 'route' as const },
     { label: 'Terms & Conditions', href: '/terms', type: 'route' as const },
+    {label: 'GM Message', href: '/gm-message', type: 'route' as const},
   ]
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 relative transition-all duration-500"
+    <nav className="fixed top-0 inset-x-0 z-50 transition-all duration-500"
       style={{
         background: scrolled ? 'rgba(0,0,0,0.95)' : 'transparent',
         backdropFilter: scrolled ? 'blur(24px)' : 'none',
@@ -368,7 +369,7 @@ function Nav({
           <img
             src={logo}
             alt="Xeno Solutions"
-            className="block h-auto w-[120px] sm:w-[150px] md:w-[200px] max-w-full select-none"
+            className="block h-auto w-30 sm:w-37.5 md:w-50 max-w-full select-none"
             draggable={true}
           />
         </Link>
@@ -563,7 +564,7 @@ function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="font-mono text-xs tracking-widest" style={{ color: '#555' }}>SCROLL</span>
+        <span className="font-mono text-xs tracking-widest" style={{ color: '#ffffff' }}>SCROLL</span>
         <div className="w-px h-12 relative overflow-hidden" style={{ background: 'rgba(255,255,255,0.1)' }}>
           <div className="absolute inset-x-0 top-0 h-6"
             style={{ background: 'linear-gradient(to bottom, white, transparent)', animation: 'particle 2s ease-in-out infinite' }} />
@@ -608,7 +609,7 @@ const services = [
       <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
         <circle cx="24" cy="24" r="16" stroke="white" strokeWidth="2" />
         <path d="M16 24l5 5 11-10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M38 10l4-4M10 38l-4 4M38 38l4 4M10 10l-4-4" stroke="#555" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M38 10l4-4M10 38l-4 4M38 38l4 4M10 10l-4-4" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" />
         <circle cx="38" cy="10" r="2" fill="white" />
         <circle cx="10" cy="38" r="2" fill="white" />
       </svg>
@@ -626,7 +627,7 @@ function Services() {
     <section id="services" className="py-20 md:py-32 px-4 sm:px-6 relative">
       <div className="max-w-7xl mx-auto">
         <div ref={ref} className="section-reveal mb-20">
-          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#555' }}>
+          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>
             WHAT WE DO
           </p>
           <h2 className="font-display font-black text-6xl md:text-7xl text-white leading-none">
@@ -658,7 +659,7 @@ function ServiceCard({ svc, index }: { svc: typeof services[0]; index: number })
           onMouseLeave={() => setHovered(false)}
         >
           <span className="font-mono text-xs absolute top-6 right-6"
-            style={{ color: hovered ? '#fff' : '#333' }}>
+            style={{ color: hovered ? '#fff' : '#9ca3af' }}>
             {svc.label}
           </span>
           <div className="mb-6">{svc.icon}</div>
@@ -734,7 +735,7 @@ function Work() {
       {activeStudy && <CaseStudyModal id={activeStudy} onClose={() => setActiveStudy(null)} />}
       <div className="max-w-7xl mx-auto">
         <div ref={ref} className="section-reveal mb-20">
-          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#555' }}>
+          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>
             SELECTED WORK
           </p>
           <h2 className="font-display font-black text-6xl md:text-7xl text-white leading-none">
@@ -779,7 +780,7 @@ function ProjectCard({ proj, flip, onCaseStudy }: { proj: typeof projects[0]; fl
             {/* Browser chrome */}
             <div className="absolute top-0 inset-x-0 h-9 flex items-center gap-2 px-4"
               style={{ background: 'rgba(0,0,0,0.85)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-              {['#555', '#777', '#999'].map((c, j) => (
+              {['#ffffff', '#777', '#999'].map((c, j) => (
                 <div key={j} className="w-2.5 h-2.5 rounded-full" style={{ background: c }} />
               ))}
               <div className="ml-2 flex-1 h-5 rounded-full px-3 flex items-center"
@@ -794,7 +795,7 @@ function ProjectCard({ proj, flip, onCaseStudy }: { proj: typeof projects[0]; fl
 
         <div className="space-y-6">
           <div>
-            <p className="font-mono text-xs tracking-widest mb-3" style={{ color: '#555' }}>
+            <p className="font-mono text-xs tracking-widest mb-3" style={{ color: '#ffffff' }}>
               {proj.subtitle.toUpperCase()}
             </p>
             <h3 className="font-display font-black text-5xl md:text-6xl mb-5 leading-tight text-white">
@@ -843,7 +844,7 @@ function Process() {
     <section className="py-20 md:py-32 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto">
         <div ref={ref} className="section-reveal mb-20">
-          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#555' }}>HOW WE WORK</p>
+          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>HOW WE WORK</p>
           <h2 className="font-display font-black text-6xl md:text-7xl text-white leading-none">
             The<br />
             <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Process</span>
@@ -894,7 +895,7 @@ function About() {
       <div className="absolute inset-x-0 top-0 h-px bg-white opacity-10" />
       <div className="max-w-7xl mx-auto grid gap-10 md:grid-cols-2 md:gap-16 items-center">
         <div ref={ref} className="section-reveal">
-          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#555' }}>ABOUT XENOSOLUTIONS</p>
+          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>ABOUT XENOSOLUTIONS</p>
           <h2 className="font-display font-black text-5xl md:text-6xl mb-6 leading-tight text-white">
             Small Team.<br />
             <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Big Impact.</span>
@@ -1011,7 +1012,7 @@ function Contact() {
       <div className="absolute inset-x-0 top-0 h-px bg-white opacity-10" />
       <div className="max-w-4xl mx-auto relative">
         <div ref={ref} className="section-reveal mb-16">
-          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#555' }}>
+          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>
             LET'S WORK TOGETHER
           </p>
           <h2 className="font-display font-black text-6xl md:text-7xl text-white leading-none mb-4">
@@ -1040,7 +1041,7 @@ function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label className="font-mono text-xs tracking-wider block mb-2" style={{ color: '#555' }}>NAME</label>
+                    <label className="font-mono text-xs tracking-wider block mb-2" style={{ color: '#ffffff' }}>NAME</label>
                     <input style={inputStyle} placeholder="Alex Chen"
                       value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
                       onFocus={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)')}
@@ -1048,7 +1049,7 @@ function Contact() {
                       required />
                   </div>
                   <div>
-                    <label className="font-mono text-xs tracking-wider block mb-2" style={{ color: '#555' }}>EMAIL</label>
+                    <label className="font-mono text-xs tracking-wider block mb-2" style={{ color: '#ffffff' }}>EMAIL</label>
                     <input type="email" style={inputStyle} placeholder="alex@company.com"
                       value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
                       onFocus={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)')}
@@ -1057,7 +1058,7 @@ function Contact() {
                   </div>
                 </div>
                 <div>
-                  <label className="font-mono text-xs tracking-wider block mb-2" style={{ color: '#555' }}>PROJECT TYPE</label>
+                  <label className="font-mono text-xs tracking-wider block mb-2" style={{ color: '#ffffff' }}>PROJECT TYPE</label>
                   <select style={{ ...inputStyle, cursor: 'pointer' }}
                     value={form.project} onChange={e => setForm({ ...form, project: e.target.value })}
                     onFocus={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)')}
@@ -1071,7 +1072,7 @@ function Contact() {
                   </select>
                 </div>
                 <div>
-                  <label className="font-mono text-xs tracking-wider block mb-2" style={{ color: '#555' }}>MESSAGE</label>
+                  <label className="font-mono text-xs tracking-wider block mb-2" style={{ color: '#ffffff' }}>MESSAGE</label>
                   <textarea style={{ ...inputStyle, resize: 'none', minHeight: 140 }}
                     placeholder="Tell us about your project, timeline, and goals..."
                     value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
@@ -1101,35 +1102,101 @@ function Footer() {
     { label: 'Contact', href: '#contact', type: 'anchor' as const },
     { label: 'Privacy Policy', href: '/privacy-policy', type: 'route' as const },
     { label: 'Terms & Conditions', href: '/terms', type: 'route' as const },
+    {label: 'GM Message', href: '/gm-message', type: 'route' as const},
   ]
   return (
-    <footer className="py-12 px-4 sm:px-6" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-      <div className="max-w-7xl mx-auto flex flex-col items-start md:flex-row md:items-center md:justify-between gap-6">
-        <div className="flex items-center gap-3">
-          <span className="font-display font-bold" style={{ color: '#555' }}>Xenosolutions © 2026</span>
+    <footer
+  className="py-12 px-4 sm:px-6"
+  style={{
+    background: "#000",
+    color: "#fff",
+    borderTop: "1px solid rgba(255,255,255,0.08)",
+  }}
+>
+      <div className="max-w-7xl mx-auto space-y-10">
+        <div className="grid gap-8 md:grid-cols-[1.25fr_0.95fr] md:items-start">
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <span className="font-display font-bold" style={{ color: '#ffffff' }}>Xenosolutions © 2026</span>
+            </div>
+            <p className="font-mono text-xs tracking-wider" style={{ color: '#9ca3af' }}>crafted with precision</p>
+          </div>
+
+          <div className="space-y-4">
+            <p className="font-mono text-xs tracking-widest" style={{ color: '#ffffff' }}>CONTACT INFORMATION</p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div>
+                <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>PHONE</p>
+                <a
+                  href="tel:+97470643918"
+                  className="font-display font-bold text-sm transition-colors duration-200"
+                  style={{ color: '#ffffff' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+                  onMouseLeave={e => (e.currentTarget.style.color = '#ffffff')}
+                >
+                  +974 70643918
+                </a>
+              </div>
+              <div>
+                <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>EMAIL</p>
+                <a
+                  href="mailto:xenosolutionsqa@gmail.com"
+                  className="font-display font-bold text-sm transition-colors duration-200"
+                  style={{ color: '#ffffff' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+                  onMouseLeave={e => (e.currentTarget.style.color = '#ffffff')}
+                >
+                  xenosolutionsqa@gmail.com
+                </a>
+              </div>
+              <div className="sm:col-span-2">
+                <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>OFFICE LOCATION</p>
+                <p className="font-display font-bold text-sm" style={{ color: '#ffffff' }}>Doha, Qatar</p>
+              </div>
+            </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Doha%2C%20Qatar"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center font-display font-black text-sm text-white transition-all duration-300"
+              style={{ gap: '8px' }}
+              onMouseEnter={e => (e.currentTarget.style.gap = '14px')}
+              onMouseLeave={e => (e.currentTarget.style.gap = '8px')}
+            >
+              View on Google Maps
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                <path fillRule="evenodd" d="M10.75 3.75a.75.75 0 00-1.5 0v10.69l-3.22-3.22a.75.75 0 10-1.06 1.06l4.5 4.5a.75.75 0 001.06 0l4.5-4.5a.75.75 0 10-1.06-1.06l-3.22 3.22V3.75z" clipRule="evenodd" />
+              </svg>
+            </a>
+
+            
+          </div>
         </div>
+
         <div className="flex flex-wrap items-center gap-4 sm:gap-8">
           {links.map(link => (
             link.type === 'anchor' ? (
               <a key={link.label} href={link.href}
                 className="font-mono text-xs tracking-wider transition-colors duration-200"
-                style={{ color: '#555' }}
+                style={{ color: '#ffffff' }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-                onMouseLeave={e => (e.currentTarget.style.color = '#555')}>
+                onMouseLeave={e => (e.currentTarget.style.color = '#ffffff')}>
                 {link.label.toUpperCase()}
               </a>
             ) : (
-              <Link key={link.label} to={link.href}
-                className="font-mono text-xs tracking-wider transition-colors duration-200"
-                style={{ color: '#555' }}
-                onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-                onMouseLeave={e => (e.currentTarget.style.color = '#555')}>
-                {link.label.toUpperCase()}
-              </Link>
+              <Link
+  key={link.label}
+  to={link.href}
+  className="font-mono text-xs tracking-wider transition-colors duration-200"
+  style={{ color: '#ffffff' }}
+  onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+  onMouseLeave={e => (e.currentTarget.style.color = '#ffffff')}
+>
+  {link.label.toUpperCase()}
+</Link>
             )
           ))}
         </div>
-        <p className="font-mono text-xs" style={{ color: '#333' }}>crafted with precision</p>
       </div>
     </footer>
   )
