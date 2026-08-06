@@ -12,11 +12,7 @@ export default function GMMessage() {
     >
       {/* Hero */}
       <section
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "120px 24px 80px",
-        }}
+        className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 lg:py-32"
       >
         <Link
           to="/"
@@ -30,14 +26,7 @@ export default function GMMessage() {
           ← Back to Home
         </Link>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.2fr 0.8fr",
-            gap: "60px",
-            alignItems: "center",
-          }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:gap-16 items-center">
           <div>
             <p
               style={{
@@ -68,9 +57,9 @@ export default function GMMessage() {
             <p
               style={{
                 color: "#999",
-                fontSize: "18px",
+                fontSize: "clamp(16px,2vw,20px)",
                 lineHeight: 1.8,
-                maxWidth: "650px",
+                maxWidth: "100%",
               }}
             >
               Building long-term partnerships through trust, quality, and
@@ -79,26 +68,12 @@ export default function GMMessage() {
           </div>
 
           <div
-            style={{
-              border: "1px solid rgba(255,255,255,.1)",
-              borderRadius: "24px",
-              padding: "40px",
-              background: "#0a0a0a",
-              textAlign: "center",
-            }}
+            className="bg-surface border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-10 text-center"
           >
             <img
   src="/gm.jpg"
   alt="Mohammed Fazlur Rahman"
-  style={{
-    width: "180px",
-    height: "180px",
-    borderRadius: "50%",
-    objectFit: "cover",
-    margin: "0 auto 25px",
-    border: "3px solid rgba(255,255,255,0.15)",
-    boxShadow: "0 15px 40px rgba(0,0,0,0.4)",
-  }}
+  className="w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 mx-auto rounded-full object-cover border-2 border-white/20 shadow-2xl"
 />
 
             <h2 style={{ marginBottom: 8 }}>
@@ -120,19 +95,10 @@ export default function GMMessage() {
 
       {/* Stats */}
       <section
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "0 24px 100px",
-        }}
+        className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 lg:py-24"
       >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4,1fr)",
-            gap: "20px",
-          }}
-        >
+      
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
             ["30+", "Years Experience"],
             ["6", "Countries"],
@@ -145,7 +111,7 @@ export default function GMMessage() {
                 background: "#0a0a0a",
                 border: "1px solid rgba(255,255,255,.08)",
                 borderRadius: "20px",
-                padding: "35px",
+                padding: "clamp(20px,3vw,35px)",
                 textAlign: "center",
               }}
             >
@@ -164,7 +130,7 @@ export default function GMMessage() {
           padding: "0 24px 100px",
         }}
       >
-        <h2 style={{ fontSize: "48px", marginBottom: "40px" }}>
+        <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", marginBottom: "40px" }}>
           Meet Our General Manager
         </h2>
 
@@ -204,10 +170,10 @@ export default function GMMessage() {
             background: "#0a0a0a",
             border: "1px solid rgba(255,255,255,.08)",
             borderRadius: "24px",
-            padding: "50px",
+            padding: "clamp(24px,5vw,50px)",
           }}
         >
-          <h2 style={{ fontSize: "42px", marginBottom: "35px" }}>
+          <h2 style={{ fontSize: "clamp(2rem,5vw,3rem)", marginBottom: "35px" }}>
             A Message to Our Clients
           </h2>
 
@@ -273,11 +239,7 @@ export default function GMMessage() {
         </h2>
 
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4,1fr)",
-            gap: "20px",
-          }}
+          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5"
         >
           {[
             ["Integrity", "Building trust through honesty and transparency."],
@@ -304,12 +266,12 @@ export default function GMMessage() {
       {/* CTA */}
       <section
         style={{
-          padding: "100px 24px",
+          padding: "clamp(60px,8vw,100px) clamp(16px,4vw,40px)",
           textAlign: "center",
           borderTop: "1px solid rgba(255,255,255,.08)",
         }}
       >
-        <h2 style={{ fontSize: "52px", marginBottom: "20px" }}>
+        <h2 style={{ fontSize: "clamp(2rem,5vw,3.5rem)", marginBottom: "20px" }}>
           Let's Build the Future Together
         </h2>
 

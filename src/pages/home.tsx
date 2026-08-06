@@ -209,7 +209,7 @@ function CaseStudyModal({ id, onClose }: { id: keyof typeof caseStudies; onClose
 
   return (
     <div
-      className="fixed inset-0 z-100 flex items-center justify-center p-4 md:p-8"
+      className="fixed inset-0 z-100 flex items-center justify-center p-4 md:p-6 sm:p-8"
       style={{ background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(12px)' }}
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
@@ -262,7 +262,9 @@ function CaseStudyModal({ id, onClose }: { id: keyof typeof caseStudies; onClose
           <div className="h-px" style={{ background: 'rgba(255,255,255,0.07)' }} />
 
           {/* Challenge + Solution */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid
+grid-cols-1
+lg:grid-cols-2 gap-6 sm:p-8">
             <div>
               <h3 className="font-mono text-xs tracking-widest mb-3" style={{ color: '#ffffff' }}>THE CHALLENGE</h3>
               <p className="font-body text-sm leading-relaxed" style={{ color: '#ccc' }}>{study.challenge}</p>
@@ -373,7 +375,7 @@ function Nav({
             draggable={true}
           />
         </Link>
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden lg:flex items-center gap-10">
           {links.map(link => (
             link.type === 'anchor' ? (
               <a key={link.label} href={link.href}
@@ -416,7 +418,7 @@ function Nav({
             )}
           </button>
         </div>
-        <div className="md:hidden flex items-center gap-2">
+        <div className="lg:hidden flex items-center gap-2">
           <button
             type="button"
             onClick={e => toggleTheme(e.currentTarget.getBoundingClientRect())}
@@ -449,7 +451,7 @@ function Nav({
         </div>
       </div>
       {menuOpen && (
-        <div className="md:hidden glass absolute inset-x-0 top-full px-6 py-6 flex flex-col gap-5">
+        <div className="lg:hidden glass absolute inset-x-0 top-full px-6 py-6 flex flex-col gap-5">
           {links.map(link => (
             link.type === 'anchor' ? (
               <a key={link.label} href={link.href}
@@ -523,7 +525,20 @@ function Hero() {
       </div>
 
       {/* Hero text */}
-      <div className="relative z-20 text-center w-full max-w-5xl mx-auto -translate-y-14 sm:-translate-y-20">
+      <div className="
+relative z-20
+w-full
+max-w-5xl
+mx-auto
+px-4
+sm:px-6
+lg:px-8
+text-center
+translate-y-0
+sm:-translate-y-10
+md:-translate-y-14
+lg:-translate-y-20
+">
         <h1
           className="font-display font-black tracking-tight text-white leading-none"
           style={{
@@ -540,7 +555,15 @@ function Hero() {
           We engineer high-performance websites that load fast, architect bulletproof hosting and surgical debugging,We turn your complex buisness needs into simple,elegant digital solutions.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4"
+        <div className="flex
+flex-col
+sm:flex-row
+items-stretch
+sm:items-center
+justify-center
+gap-4
+w-full
+sm:w-auto"
           style={{ animation: 'slide-up 1.1s ease forwards' }}>
           <a href="#work"
             className="btn-primary px-8 py-4 rounded-full font-display font-black text-base text-black text-center">
@@ -624,13 +647,18 @@ const services = [
 function Services() {
   const ref = useReveal()
   return (
-    <section id="services" className="py-20 md:py-32 px-4 sm:px-6 relative">
+    <section id="services" className="py-16
+sm:py-20
+lg:py-32 px-4 sm:px-6 relative">
       <div className="max-w-7xl mx-auto">
         <div ref={ref} className="section-reveal mb-20">
           <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>
             WHAT WE DO
           </p>
-          <h2 className="font-display font-black text-6xl md:text-7xl text-white leading-none">
+          <h2 className="font-display font-black text-4xl
+sm:text-5xl
+md:text-6xl
+lg:text-7xl text-white leading-none">
             Our<br />
             <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Services</span>
           </h2>
@@ -650,7 +678,7 @@ function ServiceCard({ svc, index }: { svc: typeof services[0]; index: number })
     <div ref={ref} className="section-reveal" style={{ transitionDelay: `${index * 0.12}s` }}>
       <TiltCard>
         <div
-          className="relative rounded-2xl p-8 h-full transition-all duration-400 overflow-hidden"
+          className="relative rounded-2xl p-6 sm:p-8 h-full transition-all duration-400 overflow-hidden"
           style={{
             background: hovered ? '#111' : '#0a0a0a',
             border: `1px solid ${hovered ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.08)'}`,
@@ -663,7 +691,7 @@ function ServiceCard({ svc, index }: { svc: typeof services[0]; index: number })
             {svc.label}
           </span>
           <div className="mb-6">{svc.icon}</div>
-          <h3 className="font-display font-black text-2xl mb-3 text-white">{svc.title}</h3>
+          <h3 className="font-display font-black text-xl sm:text-2xl mb-3 text-white">{svc.title}</h3>
           <p className="font-body text-sm leading-relaxed mb-6" style={{ color: '#888' }}>{svc.desc}</p>
           <div className="flex flex-wrap gap-2">
             {svc.tech.map(t => (
@@ -731,14 +759,19 @@ function Work() {
   const ref = useReveal()
   const [activeStudy, setActiveStudy] = useState<keyof typeof caseStudies | null>(null)
   return (
-    <section id="work" className="py-20 md:py-32 px-4 sm:px-6">
+    <section id="work" className="py-16
+sm:py-20
+lg:py-32 px-4 sm:px-6">
       {activeStudy && <CaseStudyModal id={activeStudy} onClose={() => setActiveStudy(null)} />}
       <div className="max-w-7xl mx-auto">
         <div ref={ref} className="section-reveal mb-20">
           <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>
             SELECTED WORK
           </p>
-          <h2 className="font-display font-black text-6xl md:text-7xl text-white leading-none">
+          <h2 className="font-display font-black text-4xl
+sm:text-5xl
+md:text-6xl
+lg:text-7xl text-white leading-none">
             Built to<br />
             <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Matter</span>
           </h2>
@@ -759,7 +792,9 @@ function ProjectCard({ proj, flip, onCaseStudy }: { proj: typeof projects[0]; fl
   const [hovered, setHovered] = useState(false)
   return (
     <div ref={ref} className="section-reveal">
-      <div className={`grid md:grid-cols-2 gap-14 items-center ${flip ? 'md:[&>*:first-child]:order-2' : ''}`}>
+      <div className={`grid
+grid-cols-1
+lg:grid-cols-2 gap-14 items-center ${flip ? 'md:[&>*:first-child]:order-2' : ''}`}>
         <TiltCard>
           <div className="relative rounded-2xl overflow-hidden"
             style={{
@@ -770,7 +805,10 @@ function ProjectCard({ proj, flip, onCaseStudy }: { proj: typeof projects[0]; fl
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}>
             <img src={proj.img} alt={proj.title}
-              className="w-full h-72 md:h-96 object-cover transition-transform duration-700"
+              className="w-full h-56
+sm:h-72
+md:h-80
+lg:h-96 object-cover transition-transform duration-700"
               style={{
                 transform: hovered ? 'scale(1.05)' : 'scale(1)',
                 filter: 'grayscale(100%) contrast(1.1)',
@@ -798,7 +836,9 @@ function ProjectCard({ proj, flip, onCaseStudy }: { proj: typeof projects[0]; fl
             <p className="font-mono text-xs tracking-widest mb-3" style={{ color: '#ffffff' }}>
               {proj.subtitle.toUpperCase()}
             </p>
-            <h3 className="font-display font-black text-5xl md:text-6xl mb-5 leading-tight text-white">
+            <h3 className="font-display font-black text-4xl
+sm:text-5xl
+lg:text-6xl mb-5 leading-tight text-white">
               {proj.title}
             </h3>
             <p className="font-body text-base leading-relaxed" style={{ color: '#888' }}>
@@ -841,11 +881,16 @@ const process = [
 function Process() {
   const ref = useReveal()
   return (
-    <section className="py-20 md:py-32 px-4 sm:px-6">
+    <section className="py-16
+sm:py-20
+lg:py-32 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto">
         <div ref={ref} className="section-reveal mb-20">
           <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>HOW WE WORK</p>
-          <h2 className="font-display font-black text-6xl md:text-7xl text-white leading-none">
+          <h2 className="font-display font-black text-4xl
+sm:text-5xl
+md:text-6xl
+lg:text-7xl text-white leading-none">
             The<br />
             <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Process</span>
           </h2>
@@ -891,12 +936,20 @@ function ProcessStep({ step, index }: { step: typeof process[0]; index: number }
 function About() {
   const ref = useReveal()
   return (
-    <section id="about" className="py-20 md:py-32 px-4 sm:px-6 relative overflow-hidden">
+    <section id="about" className="py-16
+sm:py-20
+lg:py-32 px-4 sm:px-6 relative overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-px bg-white opacity-10" />
-      <div className="max-w-7xl mx-auto grid gap-10 md:grid-cols-2 md:gap-16 items-center">
+      <div className="max-w-7xl mx-auto grid
+grid-cols-1
+lg:grid-cols-2
+gap-10
+lg:gap-16 md:gap-16 items-center">
         <div ref={ref} className="section-reveal">
           <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>ABOUT XENOSOLUTIONS</p>
-          <h2 className="font-display font-black text-5xl md:text-6xl mb-6 leading-tight text-white">
+          <h2 className="font-display font-black text-4xl
+sm:text-5xl
+lg:text-6xl mb-6 leading-tight text-white">
             Small Team.<br />
             <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Big Impact.</span>
           </h2>
@@ -1008,14 +1061,19 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 md:py-32 px-4 sm:px-6 relative">
+    <section id="contact" className="py-16
+sm:py-20
+lg:py-32 px-4 sm:px-6 relative">
       <div className="absolute inset-x-0 top-0 h-px bg-white opacity-10" />
-      <div className="max-w-4xl mx-auto relative">
+      <div className="max-w-5xl mx-auto relative">
         <div ref={ref} className="section-reveal mb-16">
           <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>
             LET'S WORK TOGETHER
           </p>
-          <h2 className="font-display font-black text-6xl md:text-7xl text-white leading-none mb-4">
+          <h2 className="font-display font-black text-4xl
+sm:text-5xl
+md:text-6xl
+lg:text-7xl text-white leading-none mb-4">
             Start a<br />
             <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Project</span>
           </h2>
@@ -1025,7 +1083,8 @@ function Contact() {
         </div>
 
         <TiltCard>
-          <div className="rounded-3xl p-6 sm:p-8 md:p-12"
+          <div className="rounded-3xl p-6 sm:p-5
+lg:p-12"
             style={{ background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)' }}>
             {sent ? (
               <div className="text-center py-16">
@@ -1114,7 +1173,7 @@ function Footer() {
   }}
 >
       <div className="max-w-7xl mx-auto space-y-10">
-        <div className="grid gap-8 md:grid-cols-[1.25fr_0.95fr] md:items-start">
+        <div className="grid gap-6 sm:p-8 md:grid-cols-[1.25fr_0.95fr] md:items-start">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <span className="font-display font-bold" style={{ color: '#ffffff' }}>Xenosolutions © 2026</span>
@@ -1173,7 +1232,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4 sm:gap-8">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 sm:p-8">
           {links.map(link => (
             link.type === 'anchor' ? (
               <a key={link.label} href={link.href}
