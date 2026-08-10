@@ -360,22 +360,13 @@ function Nav({
     {label: 'GM Message', href: '/gm-message', type: 'route' as const},
   ]
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 transition-all duration-500"
-      style={{
-  background: scrolled
-    ? theme === 'dark'
-      ? 'rgba(0,0,0,0.95)'
-      : 'rgba(255,255,255,0.95)'
-    : theme === 'dark'
-      ? 'transparent'
-      : 'rgba(255,255,255,0.95)',
-  backdropFilter: scrolled ? 'blur(24px)' : 'none',
-  borderBottom: scrolled
-    ? theme === 'dark'
-      ? '1px solid rgba(255,255,255,0.08)'
-      : '1px solid rgba(0,0,0,0.08)'
-    : 'none',
-}}>
+    <nav
+  className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+    scrolled
+      ? '-translate-y-full opacity-0 pointer-events-none'
+      : 'translate-y-0 opacity-100'
+  }`}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
           <img
@@ -1209,7 +1200,7 @@ function Footer() {
             <p className="font-mono text-xs tracking-widest" style={{ color: '#ffffff' }}>CONTACT INFORMATION</p>
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
-                <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>PHONE</p>
+                <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>PHONE & WHATSAPP</p>
                 <a
                   href="tel & Whatsapp:+97470643918"
                   className="font-display font-bold text-sm transition-colors duration-200"
