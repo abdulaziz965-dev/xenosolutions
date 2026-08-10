@@ -1211,7 +1211,7 @@ function Footer() {
               <div>
                 <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>PHONE</p>
                 <a
-                  href="tel:+97470643918"
+                  href="tel & Whatsapp:+97470643918"
                   className="font-display font-bold text-sm transition-colors duration-200"
                   style={{ color: '#ffffff' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
