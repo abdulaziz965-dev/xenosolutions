@@ -1202,7 +1202,9 @@ function Footer() {
               <div>
                 <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>PHONE & WHATSAPP</p>
                 <a
-                  href="tel & Whatsapp:+97470643918"
+                  href="https://wa.me/97470643918?text=Hello%20XenoSolutions%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+                  target="_blank"
+                  rel="noreferrer"
                   className="font-display font-bold text-sm transition-colors duration-200"
                   style={{ color: '#ffffff' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
