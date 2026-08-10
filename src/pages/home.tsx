@@ -362,10 +362,20 @@ function Nav({
   return (
     <nav className="fixed top-0 inset-x-0 z-50 transition-all duration-500"
       style={{
-        background: scrolled ? 'rgba(0,0,0,0.95)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(24px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
-      }}>
+  background: scrolled
+    ? theme === 'dark'
+      ? 'rgba(0,0,0,0.95)'
+      : 'rgba(255,255,255,0.95)'
+    : theme === 'dark'
+      ? 'transparent'
+      : 'rgba(255,255,255,0.95)',
+  backdropFilter: scrolled ? 'blur(24px)' : 'none',
+  borderBottom: scrolled
+    ? theme === 'dark'
+      ? '1px solid rgba(255,255,255,0.08)'
+      : '1px solid rgba(0,0,0,0.08)'
+    : 'none',
+}}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
           <img
@@ -566,7 +576,7 @@ lg:pt-0
 
         <p className="font-body text-sm sm:text-lg max-w-2xl mx-auto mt-6 sm:mt-8 mb-8 sm:mb-10 leading-relaxed"
           style={{ color: '#888', animation: 'slide-up 1s ease forwards' }}>
-          We engineer high-performance websites that load fast, architect bulletproof hosting and surgical debugging,We turn your complex buisness needs into simple,elegant digital solutions.
+          We engineer high-performance websites that load fast, architect bulletproof hosting and surgical debugging.We turn your complex business needs into simple and elegant digital solution.
         </p>
 
         <div className="flex
@@ -624,7 +634,7 @@ const services = [
     ),
     label: '01',
     title: 'Website Development',
-    desc: 'From concept to production — we architect blazing-fast, pixel-perfect websites using modern stacks. React, Next.js, TypeScript. No templates, pure craft.',
+    desc: 'From concept to production — we architect blazing-fast, pixel-perfect websites using modern stacks. React, Next.js, TypeScript. No templates but pure craft.',
     tech: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
   },
   {
@@ -638,7 +648,7 @@ const services = [
     ),
     label: '02',
     title: 'Web Hosting',
-    desc: '99.9% uptime SLA, edge-optimized delivery, auto-scaling infrastructure, and SSL-secured domains. Your app stays fast, always.',
+    desc: '99.9% uptime SLA, edge-optimized delivery, auto-scaling infrastructure, and SSL-secured domains. Your website stays fast always.',
     tech: ['CDN', 'SSL/TLS', 'Auto-Scale', '99.9% SLA'],
   },
   {
@@ -653,7 +663,7 @@ const services = [
     ),
     label: '03',
     title: 'Debugging & QA',
-    desc: 'Deep-dive diagnostics on broken codebases, performance bottlenecks, and race conditions. We trace, isolate, and surgically eliminate bugs.',
+    desc: 'Deep-dive diagnostics on broken codebases, performance bottlenecks and race conditions. We trace, isolate and eliminate bugs.',
     tech: ['Profiling', 'Tracing', 'Load Tests', 'Root Cause'],
   },
 ]
@@ -747,7 +757,7 @@ const projects = [
     id: 'cardiacsyncai',
     title: 'Cardiac Sync AI',
     subtitle: 'AI-Powered Cardiac Monitoring',
-    desc:' A healthcare platform that leverages AI to monitor cardiac patients in real-time, analyzing ECG data to detect arrhythmias and other anomalies. Provides alerts to healthcare providers and integrates with wearable devices for continuous monitoring.',
+    desc:' A healthcare platform that leverages AI to monitor cardiac patients in real-time by analyzing ECG data to detect arrhythmias and other anomalies it also provides alerts to healthcare providers and integrates with wearable devices for continuous monitoring.',
     tags: ['AI/ML', 'Healthcare', 'Real-time Monitoring', 'Wearables'],
     img:card,
   },
@@ -755,7 +765,7 @@ const projects = [
     id:'nephronx',
     title:'NephronX',
     subtitle:'AI-Driven Kidney Health Platform',
-    desc:'A platform that uses AI to analyze patient data and provide personalized recommendations for kidney health management. It includes predictive analytics, patient education, and integration with electronic health records.',
+    desc:'A platform that uses AI to analyze patient data and provide personalized recommendations for kidney health management. It includes predictive analytics, patient education and integrates with electronic health records.',
     tags:['AI/ML', 'Healthcare', 'Predictive Analytics', 'Patient Management'],
     img:Neph,
   },
@@ -763,7 +773,7 @@ const projects = [
     id: 'hyderabadengineeringworks',
     title: 'Hyderabad Engineering Works',
     subtitle: 'Industrial Engineering Website',
-    desc: 'A modern corporate website designed for Hyderabad  Engineering Works to showcase its engineering expertise,   fabrication services, and industrial capabilities. Built with a responsive design, intuitive navigation, and a professional   visual identity to strengthen the company’s digital presence and generate business inquiries.',
+    desc: 'A modern corporate website designed for Hyderabad  Engineering Works to showcase its engineering expertise,   fabrication services and industrial capabilities. Built with a responsive design, intuitive navigation and a professional  visual identity to strengthen the company’s digital presence as well as generate business inquiries.',
     tags: ['React', 'Responsive Design', 'Corporate Website', 'SEO'],
     img: hyde,
   }
@@ -889,7 +899,7 @@ const process = [
   { num: '01', title: 'Discovery', desc: 'We map your goals, audience, and constraints. No assumptions.' },
   { num: '02', title: 'Design', desc: 'Wireframes to high-fidelity prototypes — reviewed together before a line of code.' },
   { num: '03', title: 'Build', desc: 'Modular, tested, documented code shipped in iterative sprints.' },
-  { num: '04', title: 'Launch', desc: 'Staged deployment, performance audit, and post-launch monitoring.' },
+  { num: '04', title: 'Launch', desc: 'Staged deployment, performance audit and post-launch monitoring.' },
 ]
 
 function Process() {
@@ -968,12 +978,12 @@ lg:text-6xl mb-6 leading-tight text-white">
             <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Big Impact.</span>
           </h2>
           <p className="font-body text-base leading-relaxed mb-4" style={{ color: '#888' }}>
-            Xenosolutions is an IT services startup built on the belief that exceptional software
-            should be accessible — not just to enterprises with massive budgets, but to founders,
-            nonprofits, and ambitious teams building things that matter.
+            Xenosolutions is an IT services provider built on the belief that exceptional software
+            should be accessible — not just to enterprises with massive budgets, but also to founders,
+            nonprofits and ambitious teams building things that matter.
           </p>
           <p className="font-body text-base leading-relaxed mb-8" style={{ color: '#888' }}>
-            We move fast, write clean code, and stay obsessively focused on outcomes. Every project
+            We move fast, write clean code and stay obsessively focused on outcomes. Every project
             gets our full attention, not a junior developer on autopilot.
           </p>
           <div className="flex flex-wrap gap-3">

@@ -62,7 +62,7 @@ export default function GMMessage() {
                 maxWidth: "100%",
               }}
             >
-              Building long-term partnerships through trust, quality, and
+              Building long-term partnerships through trust, quality and
               innovative digital solutions.
             </p>
           </div>
@@ -135,7 +135,7 @@ export default function GMMessage() {
         </h2>
 
         <p style={{ color: "#aaa", lineHeight: 1.9 }}>
-          Mohammed Fazlur Rahman is an accomplished industry professional with over 30 years of industry experience, including more than 16 years in Qatar, Mohammed Fazlur Rahman has established himself as a respected business leader with extensive international exposure across the United Kingdom, Oman, the UAE, Saudi Arabia, and India. Holding an MSc from Wales (UK) and an MBA from Coventry (UK), he specializes in business leadership, strategic planning, customer acquisition, operations management, and organizational development.
+          Mohammed Fazlur Rahman is an accomplished industry professional with over 30+ years of industry experience, including more than 16 years in Qatar. Mohammed Fazlur Rahman has established himself as a respected business leader with extensive international exposure across Qatar, United Kingdom, Oman, UAE, Saudi Arabia and India. Holding an MSc from Wales (UK) and an MBA from Coventry (UK), he specializes in business leadership, strategic planning, customer acquisition, operations management and organizational development.
         </p>
 
         <p
@@ -145,10 +145,10 @@ export default function GMMessage() {
             marginTop: "25px",
           }}
         >
-          Fluent in English, Arabic, Urdu, and Hindi, he is passionate about
-          mentoring teams, fostering innovation, and delivering exceptional
+          Fluent in English, Arabic, Urdu and Hindi.He is passionate about
+          mentoring teams, fostering innovation and delivering exceptional
           customer experiences. His leadership is built on integrity,
-          collaboration, and a commitment to long-term business success.
+          collaboration and a commitment to long-term business success.
         </p>
       </section>
 
@@ -180,21 +180,21 @@ export default function GMMessage() {
             <br />
             <br />
             Technology continues to transform businesses at an unprecedented
-            pace, and our mission is to help organizations embrace this
+            pace and our mission is to help organizations embrace this
             transformation with confidence. At XenoSolutions, we are committed
-            to delivering reliable, innovative, and scalable digital solutions
-            that create measurable business value.
+            to delivering reliable, innovative and scalable digital solutions
+            that create measurable business values.
             <br />
             <br />
             Throughout my professional journey across multiple countries and
             industries, I have learned that lasting success is built on trust,
-            quality, and meaningful partnerships. These principles continue to
+            quality and meaningful partnerships. These principles continue to
             guide every project we undertake.
             <br />
             <br />
             Whether you are a startup or an established enterprise, our team is
             dedicated to helping you achieve your digital ambitions with
-            professionalism, integrity, and technical excellence.
+            professionalism, integrity and technical excellence.
             <br />
             <br />
             Thank you for your trust in XenoSolutions. We look forward to
@@ -279,7 +279,7 @@ export default function GMMessage() {
           }}
         >
           We look forward to partnering with organizations that value
-          innovation, quality, and long-term success.
+          innovation, quality and long-term success.
         </p>
 
         <Link
