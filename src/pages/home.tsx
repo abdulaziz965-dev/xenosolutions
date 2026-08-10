@@ -484,7 +484,22 @@ function Hero() {
 
   return (
     <section id="hero" ref={containerRef} onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-24 sm:px-6"
+      className="
+relative
+min-h-screen
+flex
+items-center
+justify-center
+overflow-hidden
+px-4
+sm:px-6
+pt-28
+pb-20
+sm:pt-32
+sm:pb-24
+lg:pt-24
+lg:pb-20
+"
       style={{ background: '#000' }}>
 
       {/* Grid */}
@@ -534,10 +549,9 @@ px-4
 sm:px-6
 lg:px-8
 text-center
-translate-y-0
-sm:-translate-y-10
-md:-translate-y-14
-lg:-translate-y-20
+pt-16
+sm:pt-20
+lg:pt-0
 ">
         <h1
           className="font-display font-black tracking-tight text-white leading-none"
