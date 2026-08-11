@@ -486,20 +486,21 @@ function Hero() {
   return (
     <section id="hero" ref={containerRef} onMouseMove={handleMouseMove}
       className="
-relative
-min-h-screen
-flex
-items-center
-justify-center
-overflow-hidden
-px-4
-sm:px-6
-pt-28
-pb-20
-sm:pt-32
-sm:pb-24
-lg:pt-24
-lg:pb-20
+  relative
+  min-h-screen
+  flex
+  items-start
+  lg:items-center
+  justify-center
+  overflow-hidden
+  px-4
+  sm:px-6
+  pt-40
+  sm:pt-44
+  lg:pt-24
+  pb-24
+  sm:pb-28
+  lg:pb-20
 "
       style={{ background: '#000' }}>
 
@@ -541,23 +542,20 @@ lg:pb-20
       </div>
 
       {/* Hero text */}
-      <div className="
-relative z-20
-w-full
-max-w-5xl
-mx-auto
-px-4
-sm:px-6
-lg:px-8
-text-center
-pt-16
-sm:pt-20
-lg:pt-0
+     <div className="
+  relative z-20
+  w-full
+  max-w-5xl
+  mx-auto
+  px-4
+  sm:px-6
+  lg:px-8
+  text-center
 ">
         <h1
           className="font-display font-black tracking-tight text-white leading-none"
           style={{
-            fontSize: 'clamp(2.8rem, 12vw, 8rem)',
+            fontSize: 'clamp(2.5rem, 11vw, 8rem)',
             animation: 'slide-up 0.9s ease forwards',
           }}
         >
