@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import emailjs from "@emailjs/browser";
 import { Link } from "react-router-dom";
+import { createPortal } from 'react-dom'
 
 const logo = '/logo.png'
 const card = '/card.jpeg'
@@ -121,9 +122,9 @@ const caseStudies = {
     title: 'RescueBite',
     subtitle: 'AI-Powered Food Distribution',
     img: rescuebite,
-    overview: 'RescueBite is an end-to-end intelligent logistics platform that connects surplus food sources — restaurants, supermarkets, and catering companies — with distribution hubs and families in need. The core engine uses a machine learning model trained on historical donation patterns and demand signals to predict where food is needed most before it even becomes available.',
+    overview: 'RescueBite is an end-to-end intelligent logistics platform that connects surplus food sources — restaurants, supermarkets and catering companies — with distribution hubs and families in need. The core engine uses a machine learning model trained on historical donation patterns and demand signals to predict where food is needed most before it even becomes available.',
     challenge: 'Food banks and NGOs were operating entirely on phone calls and spreadsheets. Surplus food was expiring before it could be routed. Volunteers had no visibility into what was available or where to go. The matching problem was being solved manually, at scale, every single day.',
-    solution: 'We built a real-time logistics layer on top of a predictive ML model. Donors log surplus via a simple mobile interface; the algorithm instantly matches each donation to the nearest high-demand hub, generates optimized pickup routes for volunteers, and pushes notifications. A live ops dashboard gives coordinators full visibility.',
+    solution: 'We built a real-time logistics layer on top of a predictive ML model. Donors log surplus via a simple mobile interface; the algorithm instantly matches each donation to the nearest high-demand hub, generates optimized pickup routes for volunteers and pushes notifications. A live ops dashboard gives coordinators full visibility.',
     stack: ['React', 'Node.js', 'Python (ML)', 'PostgreSQL', 'Google Maps API', 'Firebase', 'TensorFlow Lite'],
     highlights: [
       'ML model trained on 18 months of donation + demand data',
@@ -136,9 +137,9 @@ const caseStudies = {
     title: 'TripLens',
     subtitle: 'Trip Planner + Expense Tracker',
     img: triplens,
-    overview: "TripLens is a unified travel companion that collapses the planning, navigation, and financial tracking of a trip into one coherent experience. Whether you're a solo traveler budgeting across currencies or a group splitting costs across multiple people, TripLens keeps every moving part organized and visible.",
-    challenge: "Travelers were juggling four or five apps simultaneously — a notes app for itineraries, a spreadsheet for expenses, a currency converter, a maps app, and a group chat for splitting costs. Every handoff between tools introduced friction and errors. Nothing was connected.",
-    solution: 'We designed TripLens around a single unified data model for a "trip" — one object that holds itinerary days, expense entries, group members, currency settings, and map waypoints. Every feature operates on that shared model, so changing a date cascades correctly, expenses auto-convert, and the map stays in sync.',
+    overview: "TripLens is a unified travel companion that collapses the planning, navigation and financial tracking of a trip into one coherent experience. Whether you're a solo traveler budgeting across currencies or a group splitting costs across multiple people, TripLens keeps every moving part organized and visible.",
+    challenge: "Travelers were juggling four or five apps simultaneously — a notes app for itineraries, a spreadsheet for expenses, a currency converter, a maps app and a group chat for splitting costs. Every handoff between tools introduced friction and errors. Nothing was connected.",
+    solution: 'We designed TripLens around a single unified data model for a "trip" — one object that holds itinerary days, expense entries, group members, currency settings and map waypoints. Every feature operates on that shared model, so changing a date cascades correctly, expenses auto-convert and the map stays in sync.',
     stack: ['React Native', 'TypeScript', 'Expo', 'Supabase', 'Mapbox', 'Open Exchange Rates API', 'Zustand'],
     highlights: [
       'Itinerary builder with drag-and-drop day planning and time estimates',
@@ -151,8 +152,8 @@ const caseStudies = {
     title: 'Cardiac Sync AI',
     subtitle: 'AI-Driven Heart Health Platform',
     img: card,
-    overview: 'A platform that uses AI to analyze cardiac data and provide personalized recommendations for heart health management. It includes predictive analytics, patient education, and integration with electronic health records.',
-    challenge: 'Cardiovascular disease is the leading cause of death globally, but early detection and management are often lacking. Patients lack access to personalized care, and healthcare providers struggle with managing complex cases.',
+    overview: 'A platform that uses AI to analyze cardiac data and provide personalized recommendations for heart health management. It includes predictive analytics, patient education and integration with electronic health records.',
+    challenge: 'Cardiovascular disease is the leading cause of death globally, but early detection and management are often lacking. Patients lack access to personalized care and healthcare providers struggle with managing complex cases.',
     solution: 'We developed CardiacSync to leverage AI for early detection and personalized treatment plans. The platform integrates with existing EHR systems, providing healthcare providers with actionable insights and enabling patients to actively participate in their care.',
     stack: ['React', 'Node.js', 'Python (ML)', 'PostgreSQL', 'TensorFlow', 'D3.js'],
     highlights: [
@@ -166,8 +167,8 @@ const caseStudies = {
     title: 'NephronX',
     subtitle: 'AI-Driven Kidney Health Platform',
     img: Neph,
-    overview: 'A platform that uses AI to analyze patient data and provide personalized recommendations for kidney health management. It includes predictive analytics, patient education, and integration with electronic health records.',
-    challenge: 'Chronic kidney disease affects millions of people worldwide, but early detection and management are often lacking. Patients lack access to personalized care, and healthcare providers struggle with managing complex cases.',
+    overview: 'A platform that uses AI to analyze patient data and provide personalized recommendations for kidney health management. It includes predictive analytics, patient education and integration with electronic health records.',
+    challenge: 'Chronic kidney disease affects millions of people worldwide, but early detection and management are often lacking. Patients lack access to personalized care and healthcare providers struggle with managing complex cases.',
     solution: 'We developed NephronX to leverage AI for early detection and personalized treatment plans. The platform integrates with existing EHR systems, providing healthcare providers with actionable insights and enabling patients to actively participate in their care.',
     stack: ['React', 'Node.js', 'Python (ML)', 'PostgreSQL', 'TensorFlow', 'D3.js'],
     highlights: [
@@ -181,9 +182,9 @@ const caseStudies = {
       title: 'Hyderabad Engineering Works',
       subtitle: 'Industrial Engineering Website',
       img: hyde,
-      overview: 'A modern corporate website designed for Hyderabad Engineering Works to showcase its engineering expertise, fabrication services, and industrial capabilities. Built with a responsive design, intuitive navigation, and a professional visual identity to strengthen the company’s digital presence and generate business inquiries.',
-      challenge: 'Hyderabad Engineering Works needed a professional online presence to attract new clients and showcase their engineering capabilities. The existing website was outdated, lacked responsiveness, and did not effectively communicate the company’s services.',
-      solution: 'We designed and developed a modern, responsive website that highlights Hyderabad Engineering Works’ services, projects, and expertise. The website features an intuitive navigation structure, visually appealing design elements, and clear calls-to-action to encourage potential clients to get in touch.',
+      overview: 'A modern corporate website designed for Hyderabad Engineering Works to showcase its engineering expertise, fabrication services and industrial capabilities. Built with a responsive design, intuitive navigation and a professional visual identity to strengthen the company’s digital presence and generate business inquiries.',
+      challenge: 'Hyderabad Engineering Works needed a professional online presence to attract new clients and showcase their engineering capabilities. The existing website was outdated, lacked responsiveness and did not effectively communicate the company’s services.',
+      solution: 'We designed and developed a modern, responsive website that highlights Hyderabad Engineering Works’ services, projects and expertise. The website features an intuitive navigation structure, visually appealing design elements and clear calls-to-action to encourage potential clients to get in touch.',
       stack: ['React', 'Responsive Design', 'Corporate Website', 'SEO'],
       highlights: [
         'Responsive design for optimal viewing on all devices',
@@ -207,14 +208,14 @@ function CaseStudyModal({ id, onClose }: { id: keyof typeof caseStudies; onClose
     }
   }, [onClose])
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-100 flex items-center justify-center p-4 md:p-6 sm:p-8"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 sm:p-8"
       style={{ background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(12px)' }}
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
       <div
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl"
+        className="relative w-full max-w-3xl max-h-[calc(100vh-2rem)] overflow-y-auto rounded-2xl"
         style={{
           background: '#0a0a0a',
           border: '1px solid rgba(255,255,255,0.12)',
@@ -235,12 +236,12 @@ function CaseStudyModal({ id, onClose }: { id: keyof typeof caseStudies; onClose
         </button>
 
         {/* Hero image */}
-        <div className="relative h-52 overflow-hidden rounded-t-2xl">
+        <div className="relative h-40 sm:h-52 md:h-64 overflow-hidden rounded-t-2xl">
           <img
             src={study.img}
             alt={study.title}
-            className="w-full h-full object-cover"
-            style={{ filter: 'grayscale(100%) contrast(1.1)' }}
+            className="w-full h-full object-contain"
+            style={{ background: '#0a0a0a', filter: 'grayscale(100%) contrast(1.1)' }}
           />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(10,10,10,1) 100%)' }} />
           <div className="absolute bottom-6 left-8">
@@ -252,7 +253,7 @@ function CaseStudyModal({ id, onClose }: { id: keyof typeof caseStudies; onClose
         </div>
 
         {/* Body */}
-        <div className="px-8 py-8 space-y-8">
+        <div className="px-5 sm:px-8 py-6 sm:py-8 space-y-8">
           {/* Overview */}
           <div>
             <h3 className="font-mono text-xs tracking-widest mb-3" style={{ color: '#ffffff' }}>OVERVIEW</h3>
@@ -306,7 +307,8 @@ lg:grid-cols-2 gap-6 sm:p-8">
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
@@ -484,25 +486,28 @@ function Hero() {
   }, [])
 
   return (
-    <section id="hero" ref={containerRef} onMouseMove={handleMouseMove}
-      className="
-  relative
-  min-h-screen
-  flex
-  items-start
-  lg:items-center
-  justify-center
-  overflow-hidden
-  px-4
-  sm:px-6
-  pt-40
-  sm:pt-44
-  lg:pt-24
-  pb-24
-  sm:pb-28
-  lg:pb-20
-"
-      style={{ background: '#000' }}>
+    <section
+  id="hero"
+  ref={containerRef}
+  onMouseMove={handleMouseMove}
+  className="
+    relative
+    min-h-screen
+    flex
+    items-center
+    justify-center
+    overflow-hidden
+    px-4
+    sm:px-6
+    pt-28
+    sm:pt-32
+    lg:pt-24
+    pb-24
+    sm:pb-28
+    lg:pb-20
+  "
+  style={{ background: '#000' }}
+>
 
       {/* Grid */}
       <div className="absolute inset-0" style={{
@@ -542,12 +547,12 @@ function Hero() {
       </div>
 
       {/* Hero text */}
-     <div className="
+    <div className="
   relative z-20
   w-full
   max-w-5xl
   mx-auto
-  px-4
+  px-2
   sm:px-6
   lg:px-8
   text-center
@@ -555,7 +560,7 @@ function Hero() {
         <h1
           className="font-display font-black tracking-tight text-white leading-none"
           style={{
-            fontSize: 'clamp(2.5rem, 11vw, 8rem)',
+            fontSize: 'clamp(2.4rem, 10vw, 8rem)',
             animation: 'slide-up 0.9s ease forwards',
           }}
         >
@@ -563,7 +568,7 @@ function Hero() {
           <div>Digital Futures</div>
         </h1>
 
-        <p className="font-body text-sm sm:text-lg max-w-2xl mx-auto mt-6 sm:mt-8 mb-8 sm:mb-10 leading-relaxed"
+        <p className="font-body text-sm sm:text-lg w-full max-w-2xl mx-auto mt-5 sm:mt-8 mb-7 sm:mb-10 leading-relaxed px-2 sm:px-0"
           style={{ color: '#888', animation: 'slide-up 1s ease forwards' }}>
           We engineer high-performance websites that load fast, architect bulletproof hosting and surgical debugging.We turn your complex business needs into simple and elegant digital solution.
         </p>
@@ -637,7 +642,7 @@ const services = [
     ),
     label: '02',
     title: 'Web Hosting',
-    desc: '99.9% uptime SLA, edge-optimized delivery, auto-scaling infrastructure, and SSL-secured domains. Your website stays fast always.',
+    desc: '99.9% uptime SLA, edge-optimized delivery, auto-scaling infrastructure and SSL-secured domains. Your website stays fast always.',
     tech: ['CDN', 'SSL/TLS', 'Auto-Scale', '99.9% SLA'],
   },
   {
@@ -730,7 +735,7 @@ const projects = [
     id: 'rescuebite',
     title: 'RescueBite',
     subtitle: 'AI-Powered Food Distribution',
-    desc: 'An intelligent platform that uses machine learning to route surplus food from restaurants and supermarkets to communities in need — reducing waste and hunger simultaneously. Real-time logistics, predictive demand modeling, and a volunteer coordination layer.',
+    desc: 'An intelligent platform that uses machine learning to route surplus food from restaurants and supermarkets to communities in need — reducing waste and hunger simultaneously. Real-time logistics, predictive demand modeling and a volunteer coordination layer.',
     tags: ['AI/ML', 'React', 'Node.js', 'Maps API', 'Real-time'],
     img: rescuebite,
   },
@@ -738,7 +743,7 @@ const projects = [
     id: 'triplens',
     title: 'TripLens',
     subtitle: 'Trip Planner + Expense Tracker',
-    desc: 'A unified travel companion that lets users plan itineraries, split expenses with groups, track spending by category, and visualize their journey on an interactive map. Smart currency conversion and offline-first architecture.',
+    desc: 'A unified travel companion that lets users plan itineraries, split expenses with groups, track spending by category and visualize their journey on an interactive map. Smart currency conversion and offline-first architecture.',
     tags: ['React Native', 'TypeScript', 'Maps', 'Finance API', 'PWA'],
     img: triplens,
   },
@@ -771,11 +776,12 @@ const projects = [
 function Work() {
   const ref = useReveal()
   const [activeStudy, setActiveStudy] = useState<keyof typeof caseStudies | null>(null)
+  const closeCaseStudy = useCallback(() => setActiveStudy(null), [])
   return (
     <section id="work" className="py-16
 sm:py-20
 lg:py-32 px-4 sm:px-6">
-      {activeStudy && <CaseStudyModal id={activeStudy} onClose={() => setActiveStudy(null)} />}
+      {activeStudy && <CaseStudyModal id={activeStudy} onClose={closeCaseStudy} />}
       <div className="max-w-7xl mx-auto">
         <div ref={ref} className="section-reveal mb-20">
           <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>
@@ -821,7 +827,7 @@ lg:grid-cols-2 gap-14 items-center ${flip ? 'md:[&>*:first-child]:order-2' : ''}
               className="w-full h-56
 sm:h-72
 md:h-80
-lg:h-96 object-cover transition-transform duration-700"
+lg:h-96 object-contain transition-transform duration-700"
               style={{
                 transform: hovered ? 'scale(1.05)' : 'scale(1)',
                 filter: 'grayscale(100%) contrast(1.1)',
@@ -885,7 +891,7 @@ lg:text-6xl mb-5 leading-tight text-white">
 
 // ── Process ───────────────────────────────────────────────────────────────────
 const process = [
-  { num: '01', title: 'Discovery', desc: 'We map your goals, audience, and constraints. No assumptions.' },
+  { num: '01', title: 'Discovery', desc: 'We map your goals, audience and constraints. No assumptions.' },
   { num: '02', title: 'Design', desc: 'Wireframes to high-fidelity prototypes — reviewed together before a line of code.' },
   { num: '03', title: 'Build', desc: 'Modular, tested, documented code shipped in iterative sprints.' },
   { num: '04', title: 'Launch', desc: 'Staged deployment, performance audit and post-launch monitoring.' },
@@ -1146,7 +1152,7 @@ lg:p-12"
                 <div>
                   <label className="font-mono text-xs tracking-wider block mb-2" style={{ color: '#ffffff' }}>MESSAGE</label>
                   <textarea style={{ ...inputStyle, resize: 'none', minHeight: 140 }}
-                    placeholder="Tell us about your project, timeline, and goals..."
+                    placeholder="Tell us about your project, timeline and goals..."
                     value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
                     onFocus={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)')}
                     onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)')}

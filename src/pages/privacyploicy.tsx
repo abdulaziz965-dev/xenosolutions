@@ -57,13 +57,13 @@ export default function PrivacyPolicy() {
           <h2 style={{ color: "#fff", marginTop: "40px" }}>Information We Collect</h2>
           <p>
             We collect information that you voluntarily provide through our contact form,
-            including your name, email address, company name, and project details.
+            including your name, email address, company name and project details.
           </p>
 
           <h2 style={{ color: "#fff", marginTop: "40px" }}>How We Use Your Information</h2>
           <p>
             Your information is used solely to respond to inquiries, provide quotations,
-            deliver requested services, and improve our customer experience.
+            deliver requested services and improve our customer experience.
           </p>
 
           <h2 style={{ color: "#fff", marginTop: "40px" }}>Third-Party Services</h2>

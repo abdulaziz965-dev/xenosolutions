@@ -45,12 +45,12 @@ export default function Terms() {
           <h2 style={{ color: "#fff", marginTop: 40 }}>Services</h2>
           <p>
             XenoSolutions provides website development, hosting, debugging,
-            consulting, and related digital services.
+            consulting and related digital services.
           </p>
 
           <h2 style={{ color: "#fff", marginTop: 40 }}>Intellectual Property</h2>
           <p>
-            All content, branding, graphics, and source code on this website
+            All content, branding, graphics and source code on this website
             remain the property of XenoSolutions unless otherwise stated.
           </p>
 
