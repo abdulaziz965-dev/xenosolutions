@@ -341,9 +341,11 @@ function Particles() {
 function Nav({
   theme,
   toggleTheme,
+  navRef,
 }: {
   theme: ThemeMode
   toggleTheme: (anchor?: DOMRect | null) => void
+  navRef: React.RefObject<HTMLElement | null>
 }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -363,6 +365,7 @@ function Nav({
   ]
   return (
     <nav
+  ref={navRef}
   className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
     scrolled
       ? '-translate-y-full opacity-0 pointer-events-none'
@@ -499,14 +502,11 @@ function Hero() {
     overflow-hidden
     px-4
     sm:px-6
-    pt-28
-    sm:pt-32
-    lg:pt-24
     pb-24
     sm:pb-28
     lg:pb-20
   "
-  style={{ background: '#000' }}
+  style={{ background: '#000', paddingTop: 'calc(var(--nav-h, 140px) + 2.5rem)' }}
 >
 
       {/* Grid */}
@@ -1285,6 +1285,23 @@ function Footer() {
 // ── Root ──────────────────────────────────────────────────────────────────────
 export default function App() {
   const { theme, isLight, toggleTheme, covering, nextTheme, coverCircle } = useThemeMode()
+  const navRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = navRef.current
+    if (!el) return
+    const updateNavHeight = () => {
+      document.documentElement.style.setProperty('--nav-h', `${el.offsetHeight}px`)
+    }
+    updateNavHeight()
+    const ro = new ResizeObserver(updateNavHeight)
+    ro.observe(el)
+    window.addEventListener('resize', updateNavHeight)
+    return () => {
+      ro.disconnect()
+      window.removeEventListener('resize', updateNavHeight)
+    }
+  }, [])
 
   return (
     <div
@@ -1312,7 +1329,7 @@ export default function App() {
         />
       )}
       <Particles />
-      <Nav theme={theme} toggleTheme={toggleTheme} />
+      <Nav theme={theme} toggleTheme={toggleTheme} navRef={navRef} />
       <Hero />
       <Services />
       <Work />
