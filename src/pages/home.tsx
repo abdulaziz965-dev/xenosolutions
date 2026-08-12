@@ -604,7 +604,7 @@ sm:w-auto"
       </div>
 
       {/* Scroll indicator */}
-      <div className="hidden sm:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2">
+      <div className="relative z-20 mt-10 flex flex-col items-center gap-2 pointer-events-none">
         <span className="font-mono text-xs tracking-widest" style={{ color: '#ffffff' }}>SCROLL</span>
         <div className="w-px h-12 relative overflow-hidden" style={{ background: 'rgba(255,255,255,0.1)' }}>
           <div className="absolute inset-x-0 top-0 h-6"
