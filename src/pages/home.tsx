@@ -1061,9 +1061,9 @@ function Contact() {
 
     setTimeout(() => setSent(false), 4000);
   } catch (error) {
-    console.error(error);
-    alert("Failed to send message. Please try again.");
-  }
+  console.error("EMAILJS ERROR:", error);
+  alert(`Email failed: ${JSON.stringify(error)}`);
+}
 };
 
   const inputStyle = {
