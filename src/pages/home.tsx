@@ -1038,8 +1038,8 @@ function Contact() {
 
   try {
     await emailjs.send(
-      import.meta.env.EMAILJS_SERVICE_ID,
-      import.meta.env.EMAILJS_TEMPLATE_ID,
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       {
         name: form.name,
         email: form.email,
@@ -1047,7 +1047,7 @@ function Contact() {
         message: form.message,
       },
 
-      {publicKey: import.meta.env.EMAILJS_PUBLIC_KEY}
+      {publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY}
     );
 
     setSent(true);
