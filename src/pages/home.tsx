@@ -376,7 +376,7 @@ function Nav({
         <Link to="/" className="flex items-center gap-3">
           <img
             src={logo}
-            alt="Xeno Solutions"
+            alt="Xenosys Solutions"
             className="block h-auto w-30 sm:w-37.5 md:w-50 max-w-full select-none"
             draggable={true}
           />
@@ -660,6 +660,44 @@ const services = [
     desc: 'Deep-dive diagnostics on broken codebases, performance bottlenecks and race conditions. We trace, isolate and eliminate bugs.',
     tech: ['Profiling', 'Tracing', 'Load Tests', 'Root Cause'],
   },
+  {
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
+        <circle cx="22" cy="22" r="13" stroke="white" strokeWidth="2" />
+        <path d="M31 31l9 9" stroke="white" strokeWidth="2" strokeLinecap="round" />
+        <path d="M15 22h14M22 15v14" stroke="#888" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+    label: '04',
+    title: 'Google SEO',
+    desc: 'Search-focused optimization to improve your website visibility, rankings and organic traffic on Google.',
+    tech: ['On-Page SEO', 'Technical SEO', 'Keywords', 'Analytics'],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
+        <rect x="7" y="9" width="34" height="30" rx="3" stroke="white" strokeWidth="2" />
+        <path d="M7 18h34M15 25h7M15 31h12M30 25h5M30 31h5" stroke="#888" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+    label: '05',
+    title: 'Customised ERP',
+    desc: 'Business-specific ERP systems designed to streamline operations, automate workflows and centralize your data.',
+    tech: ['ERP Systems', 'Automation', 'Dashboards', 'Integrations'],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
+        <path d="M8 34l9-9 7 6 16-17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M31 14h9v9" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M8 40h32" stroke="white" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+    label: '06',
+    title: 'Digital Marketing',
+    desc: 'Data-driven digital marketing strategies that build your online presence, reach the right audience and generate leads.',
+    tech: ['Social Media', 'Campaigns', 'Content', 'Analytics'],
+  },
 ]
 
 function Services() {
@@ -681,7 +719,7 @@ lg:text-7xl text-white leading-none">
             <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Services</span>
           </h2>
         </div>
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {services.map((svc, i) => <ServiceCard key={i} svc={svc} index={i} />)}
         </div>
       </div>
@@ -965,7 +1003,7 @@ lg:grid-cols-2
 gap-10
 lg:gap-16 md:gap-16 items-center">
         <div ref={ref} className="section-reveal">
-          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>ABOUT XENOSOLUTIONS</p>
+          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>ABOUT XENOSYS SOLUTIONS</p>
           <h2 className="font-display font-black text-4xl
 sm:text-5xl
 lg:text-6xl mb-6 leading-tight text-white">
@@ -973,7 +1011,7 @@ lg:text-6xl mb-6 leading-tight text-white">
             <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Big Impact.</span>
           </h2>
           <p className="font-body text-base leading-relaxed mb-4" style={{ color: '#888' }}>
-            Xenosolutions is an IT services provider built on the belief that exceptional software
+            Xenosys Solutions is an IT services provider built on the belief that exceptional software
             should be accessible — not just to enterprises with massive budgets, but also to founders,
             nonprofits and ambitious teams building things that matter.
           </p>
@@ -1102,6 +1140,43 @@ lg:text-7xl text-white leading-none mb-4">
           </p>
         </div>
 
+        {/* Department Contacts */}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-10">
+          {[
+            { title: 'General Enquiries', email: 'Info@xenosysweb.com' },
+            { title: 'Sales Dept', email: 'sales@xenosysweb.com' },
+            { title: 'Careers & HR Dept', email: 'hr@xenosysweb.com' },
+            { title: 'Accounts & Finance Dept', email: 'Finance@xenosysweb.com' },
+            { title: 'Purchase & Procurement Dept', email: 'Procurement@xenosysweb.com' },
+            { title: 'Branding & Marketing Dept', email: 'Marketing@xenosysweb.com' },
+          ].map((dept) => (
+            <div
+              key={dept.email}
+              className="rounded-2xl p-5 sm:p-6 transition-all duration-300"
+              style={{
+                background: '#0a0a0a',
+                border: '1px solid rgba(255,255,255,0.1)',
+              }}
+            >
+              <p
+                className="font-mono text-[11px] tracking-widest mb-3"
+                style={{ color: '#888' }}
+              >
+                {dept.title.toUpperCase()}
+              </p>
+              <a
+                href={`mailto:${dept.email}`}
+                className="font-display font-bold text-sm sm:text-base text-white break-all transition-opacity duration-200"
+                style={{ opacity: 0.9 }}
+                onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
+                onMouseLeave={e => (e.currentTarget.style.opacity = '0.9')}
+              >
+                {dept.email}
+              </a>
+            </div>
+          ))}
+        </div>
+
         <TiltCard>
           <div className="rounded-3xl p-6 sm:p-5
 lg:p-12"
@@ -1173,7 +1248,7 @@ lg:p-12"
 }
 
 // ── Footer ────────────────────────────────────────────────────────────────────
-function Footer() {
+function Footer({ isLight }: { isLight: boolean }) {
   const links = [
     { label: 'Services', href: '#services', type: 'anchor' as const },
     { label: 'Work', href: '#work', type: 'anchor' as const },
@@ -1196,7 +1271,7 @@ function Footer() {
         <div className="grid gap-6 sm:p-8 md:grid-cols-[1.25fr_0.95fr] md:items-start">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <span className="font-display font-bold" style={{ color: '#ffffff' }}>Xenosolutions © 2026</span>
+              <span className="font-display font-bold" style={{ color: '#ffffff' }}>Xenosys Solutions © 2026</span>
             </div>
             <p className="font-mono text-xs tracking-wider" style={{ color: '#9ca3af' }}>crafted with precision</p>
           </div>
@@ -1207,7 +1282,7 @@ function Footer() {
               <div>
                 <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>PHONE & WHATSAPP</p>
                 <a
-                  href="https://wa.me/97470643918?text=Hello%20XenoSolutions%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+                  href="https://wa.me/97470643918?text=Hello%20Xenosys Solutions%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
                   target="_blank"
                   rel="noreferrer"
                   className="font-display font-bold text-sm transition-colors duration-200"
@@ -1221,22 +1296,54 @@ function Footer() {
               <div>
                 <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>EMAIL</p>
                 <a
-                  href="mailto:xenosolutionsqa@gmail.com"
+                  href="mailto:Info@xenosys.web"
                   className="font-display font-bold text-sm transition-colors duration-200"
                   style={{ color: '#ffffff' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
                   onMouseLeave={e => (e.currentTarget.style.color = '#ffffff')}
                 >
-                  xenosolutionsqa@gmail.com
+                  Info@xenosys.web
                 </a>
               </div>
               <div className="sm:col-span-2">
                 <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>OFFICE LOCATION</p>
-                <p className="font-display font-bold text-sm" style={{ color: '#ffffff' }}>Doha, Qatar</p>
+                <p className="font-display font-bold text-sm" style={{ color: '#ffffff' }}>ICONO VIEW,Building 44 ,C Ring Road,<br></br>Doha, Qatar</p>
+              </div>
+            </div>
+
+            {/* Department Contacts */}
+            <div className="pt-4 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+              <p className="font-mono text-[11px] tracking-widest mb-4" style={{ color: '#9ca3af' }}>
+                DEPARTMENT CONTACTS
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {[
+                  { title: 'General Enquiries', email: 'Info@xenosysweb.com' },
+                  { title: 'Sales Dept', email: 'sales@xenosysweb.com' },
+                  { title: 'Careers & HR Dept', email: 'hr@xenosysweb.com' },
+                  { title: 'Accounts & Finance Dept', email: 'Finance@xenosysweb.com' },
+                  { title: 'Purchase & Procurement Dept', email: 'Procurement@xenosysweb.com' },
+                  { title: 'Branding & Marketing Dept', email: 'Marketing@xenosysweb.com' },
+                ].map((dept) => (
+                  <div key={dept.email}>
+                    <p className="font-mono text-[10px] tracking-wider mb-1" style={{ color: '#666' }}>
+                      {dept.title.toUpperCase()}
+                    </p>
+                    <a
+                      href={`mailto:${dept.email}`}
+                      className="font-display font-bold text-sm text-white break-all transition-opacity duration-200"
+                      style={{ opacity: 0.9 }}
+                      onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
+                      onMouseLeave={e => (e.currentTarget.style.opacity = '0.9')}
+                    >
+                      {dept.email}
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Doha%2C%20Qatar"
+              href="https://www.google.com/maps/place/ICONO+VIEW/@25.2638874,51.5240631,17z/data=!3m1!4b1!4m6!3m5!1s0x3e45c5c5ec656cc9:0xde06a1766420dbcb!8m2!3d25.2638874!4d51.526638!16s%2Fg%2F11jcqfc04c?entry=ttu"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center font-display font-black text-sm text-white transition-all duration-300"
@@ -1250,7 +1357,36 @@ function Footer() {
               </svg>
             </a>
 
-            
+            {/* Office photo + Google Maps */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 w-full">
+              <div
+                className="relative overflow-hidden rounded-2xl h-56 md:h-64"
+                style={{ border: '1px solid rgba(255,255,255,0.1)', background: '#0a0a0a' }}
+              >
+                <img
+                  src="/icono-view.jpeg"
+                  alt="ICONO VIEW office location"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div
+                className="relative overflow-hidden rounded-2xl h-56 md:h-64"
+                style={{
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: '#0a0a0a',
+                  filter: isLight ? 'invert(1) hue-rotate(180deg)' : 'none',
+                }}
+              >
+                <iframe
+                  title="ICONO VIEW location on Google Maps"
+                  src="https://www.google.com/maps?q=25.2638874,51.526638&z=17&output=embed"
+                  className="w-full h-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -1337,7 +1473,7 @@ export default function App() {
       <Process />
       <About />
       <Contact />
-      <Footer />
+      <Footer isLight={isLight} />
     </div>
   )
 }
