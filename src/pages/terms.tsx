@@ -44,14 +44,14 @@ export default function Terms() {
 
           <h2 style={{ color: "#fff", marginTop: 40 }}>Services</h2>
           <p>
-            XenoSolutions provides website development, hosting, debugging,
+            XenosysSolutions provides website development, hosting, debugging,
             consulting and related digital services.
           </p>
 
           <h2 style={{ color: "#fff", marginTop: 40 }}>Intellectual Property</h2>
           <p>
             All content, branding, graphics and source code on this website
-            remain the property of XenoSolutions unless otherwise stated.
+            remain the property of XenosysSolutions unless otherwise stated.
           </p>
 
           <h2 style={{ color: "#fff", marginTop: 40 }}>Project Payments</h2>
@@ -62,7 +62,7 @@ export default function Terms() {
 
           <h2 style={{ color: "#fff", marginTop: 40 }}>Limitation of Liability</h2>
           <p>
-            XenoSolutions shall not be liable for indirect or consequential
+            XenosysSolutions shall not be liable for indirect or consequential
             damages arising from the use of this website or our services.
           </p>
 

@@ -86,7 +86,7 @@ export default function PrivacyPolicy() {
 
           <h2 style={{ color: "#fff", marginTop: "40px" }}>Contact</h2>
           <p>
-            For any privacy-related questions, please contact XenoSolutions through our
+            For any privacy-related questions, please contact XenosysSolutions through our
             Contact page.
           </p>
 

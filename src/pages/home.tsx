@@ -9,13 +9,14 @@ const Neph = '/Neph.jpg'
 const hyde = '/hyde.png'
 const rescuebite = '/rescuebite.png'
 const triplens = '/triplens.png'
+const posMachine = '/pos-machine.jpeg'
 
 type ThemeMode = 'dark' | 'light'
 
 function useThemeMode() {
   const [theme, setTheme] = useState<ThemeMode>(() => {
     if (typeof window === 'undefined') return 'dark'
-    const stored = window.localStorage.getItem('xeno-theme') as ThemeMode | null
+    const stored = window.localStorage.getItem('Xenosys-theme') as ThemeMode | null
     const preferredLight = window.matchMedia('(prefers-color-scheme: light)').matches
     return stored ?? (preferredLight ? 'light' : 'dark')
   })
@@ -24,7 +25,7 @@ function useThemeMode() {
   const [coverCircle, setCoverCircle] = useState<{ x: number; y: number; size: number } | null>(null)
 
   useEffect(() => {
-    window.localStorage.setItem('xeno-theme', theme)
+    window.localStorage.setItem('Xenosys-theme', theme)
     document.documentElement.style.colorScheme = theme
   }, [theme])
 
@@ -376,7 +377,7 @@ function Nav({
         <Link to="/" className="flex items-center gap-3">
           <img
             src={logo}
-            alt="Xenosys Solutions"
+            alt="Xenosyssys Solutions"
             className="block h-auto w-30 sm:w-37.5 md:w-50 max-w-full select-none"
             draggable={true}
           />
@@ -675,15 +676,28 @@ const services = [
   },
   {
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
-        <rect x="7" y="9" width="34" height="30" rx="3" stroke="white" strokeWidth="2" />
-        <path d="M7 18h34M15 25h7M15 31h12M30 25h5M30 31h5" stroke="#888" strokeWidth="2" strokeLinecap="round" />
-      </svg>
+      <div className="flex items-center gap-3">
+        {/* Existing ERP icon */}
+        <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 shrink-0">
+          <rect x="5" y="7" width="38" height="34" rx="4" stroke="white" strokeWidth="2" />
+          <path d="M11 14h26M11 21h26M11 28h16" stroke="white" strokeWidth="2" strokeLinecap="round" />
+          <path d="M31 28h6M31 33h6" stroke="#888" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+
+        {/* Small POS image */}
+        <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10 bg-white/5 flex items-center justify-center">
+          <img
+            src={posMachine}
+            alt="POS machine"
+            className="w-full h-full object-contain"
+          />
+        </div>
+      </div>
     ),
     label: '05',
     title: 'Customised ERP',
-    desc: 'Business-specific ERP systems designed to streamline operations, automate workflows and centralize your data.',
-    tech: ['ERP Systems', 'Automation', 'Dashboards', 'Integrations'],
+    desc: 'Business-specific ERP systems designed to streamline operations, automate workflows and centralize your data, with integrated Point of Sale (POS) solutions for billing, payments and inventory management.',
+    tech: ['ERP Systems', 'POS', 'Automation', 'Dashboards', 'Integrations'],
   },
   {
     icon: (
@@ -881,7 +895,7 @@ lg:h-96 object-contain transition-transform duration-700"
               <div className="ml-2 flex-1 h-5 rounded-full px-3 flex items-center"
                 style={{ background: 'rgba(255,255,255,0.05)' }}>
                 <span className="font-mono text-xs" style={{ color: '#666' }}>
-                  xenosolutions.dev/{proj.id}
+                  Xenosyssolutions.dev/{proj.id}
                 </span>
               </div>
             </div>
@@ -1003,7 +1017,7 @@ lg:grid-cols-2
 gap-10
 lg:gap-16 md:gap-16 items-center">
         <div ref={ref} className="section-reveal">
-          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>ABOUT XENOSYS SOLUTIONS</p>
+          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: '#ffffff' }}>ABOUT XenosysSYS SOLUTIONS</p>
           <h2 className="font-display font-black text-4xl
 sm:text-5xl
 lg:text-6xl mb-6 leading-tight text-white">
@@ -1011,7 +1025,7 @@ lg:text-6xl mb-6 leading-tight text-white">
             <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Big Impact.</span>
           </h2>
           <p className="font-body text-base leading-relaxed mb-4" style={{ color: '#888' }}>
-            Xenosys Solutions is an IT services provider built on the belief that exceptional software
+            Xenosyssys Solutions is an IT services provider built on the belief that exceptional software
             should be accessible — not just to enterprises with massive budgets, but also to founders,
             nonprofits and ambitious teams building things that matter.
           </p>
@@ -1143,12 +1157,12 @@ lg:text-7xl text-white leading-none mb-4">
         {/* Department Contacts */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-10">
           {[
-            { title: 'General Enquiries', email: 'Info@xenosysweb.com' },
-            { title: 'Sales Dept', email: 'sales@xenosysweb.com' },
-            { title: 'Careers & HR Dept', email: 'hr@xenosysweb.com' },
-            { title: 'Accounts & Finance Dept', email: 'Finance@xenosysweb.com' },
-            { title: 'Purchase & Procurement Dept', email: 'Procurement@xenosysweb.com' },
-            { title: 'Branding & Marketing Dept', email: 'Marketing@xenosysweb.com' },
+            { title: 'General Enquiries', email: 'Info@Xenosysweb.com' },
+            { title: 'Sales Dept', email: 'sales@Xenosysweb.com' },
+            { title: 'Careers & HR Dept', email: 'hr@Xenosysweb.com' },
+            { title: 'Accounts & Finance Dept', email: 'Finance@Xenosysweb.com' },
+            { title: 'Purchase & Procurement Dept', email: 'Procurement@Xenosysweb.com' },
+            { title: 'Branding & Marketing Dept', email: 'Marketing@Xenosysweb.com' },
           ].map((dept) => (
             <div
               key={dept.email}
@@ -1271,7 +1285,7 @@ function Footer({ isLight }: { isLight: boolean }) {
         <div className="grid gap-6 sm:p-8 md:grid-cols-[1.25fr_0.95fr] md:items-start">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <span className="font-display font-bold" style={{ color: '#ffffff' }}>Xenosys Solutions © 2026</span>
+              <span className="font-display font-bold" style={{ color: '#ffffff' }}>Xenosyssys Solutions © 2026</span>
             </div>
             <p className="font-mono text-xs tracking-wider" style={{ color: '#9ca3af' }}>crafted with precision</p>
           </div>
@@ -1282,7 +1296,7 @@ function Footer({ isLight }: { isLight: boolean }) {
               <div>
                 <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>PHONE & WHATSAPP</p>
                 <a
-                  href="https://wa.me/97470643918?text=Hello%20Xenosys Solutions%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+                  href="https://wa.me/97470643918?text=Hello%20Xenosyssys Solutions%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
                   target="_blank"
                   rel="noreferrer"
                   className="font-display font-bold text-sm transition-colors duration-200"
@@ -1296,13 +1310,13 @@ function Footer({ isLight }: { isLight: boolean }) {
               <div>
                 <p className="font-mono text-[11px] tracking-wider mb-1" style={{ color: '#9ca3af' }}>EMAIL</p>
                 <a
-                  href="mailto:Info@xenosys.web"
+                  href="mailto:Info@Xenosysweb.com"
                   className="font-display font-bold text-sm transition-colors duration-200"
                   style={{ color: '#ffffff' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
                   onMouseLeave={e => (e.currentTarget.style.color = '#ffffff')}
                 >
-                  Info@xenosys.web
+                  Info@Xenosysweb.com
                 </a>
               </div>
               <div className="sm:col-span-2">
@@ -1318,12 +1332,12 @@ function Footer({ isLight }: { isLight: boolean }) {
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
                 {[
-                  { title: 'General Enquiries', email: 'Info@xenosysweb.com' },
-                  { title: 'Sales Dept', email: 'sales@xenosysweb.com' },
-                  { title: 'Careers & HR Dept', email: 'hr@xenosysweb.com' },
-                  { title: 'Accounts & Finance Dept', email: 'Finance@xenosysweb.com' },
-                  { title: 'Purchase & Procurement Dept', email: 'Procurement@xenosysweb.com' },
-                  { title: 'Branding & Marketing Dept', email: 'Marketing@xenosysweb.com' },
+                  { title: 'General Enquiries', email: 'Info@Xenosysweb.com' },
+                  { title: 'Sales Dept', email: 'sales@Xenosysweb.com' },
+                  { title: 'Careers & HR Dept', email: 'hr@Xenosysweb.com' },
+                  { title: 'Accounts & Finance Dept', email: 'Finance@Xenosysweb.com' },
+                  { title: 'Purchase & Procurement Dept', email: 'Procurement@Xenosysweb.com' },
+                  { title: 'Branding & Marketing Dept', email: 'Marketing@Xenosysweb.com' },
                 ].map((dept) => (
                   <div key={dept.email}>
                     <p className="font-mono text-[10px] tracking-wider mb-1" style={{ color: '#666' }}>
