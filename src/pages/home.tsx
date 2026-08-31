@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import emailjs from "@emailjs/browser";
+import { createClient } from '@supabase/supabase-js'
 import { Link } from "react-router-dom";
 import { createPortal } from 'react-dom'
 
@@ -10,6 +11,11 @@ const hyde = '/hyde.png'
 const rescuebite = '/rescuebite.png'
 const triplens = '/triplens.png'
 const posMachine = '/pos-machine.jpeg'
+
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
+)
 
 type ThemeMode = 'dark' | 'light'
 
@@ -359,6 +365,7 @@ function Nav({
     { label: 'Services', href: '#services', type: 'anchor' as const },
     { label: 'Work', href: '#work', type: 'anchor' as const },
     { label: 'About', href: '#about', type: 'anchor' as const },
+    { label: 'Reviews', href: '#reviews', type: 'anchor' as const },
     { label: 'Contact', href: '#contact', type: 'anchor' as const },
     { label: 'Privacy Policy', href: '/privacy-policy', type: 'route' as const },
     { label: 'Terms & Conditions', href: '/terms', type: 'route' as const },
@@ -1079,6 +1086,254 @@ lg:text-6xl mb-6 leading-tight text-white">
   )
 }
 
+// ── Customer Reviews ──────────────────────────────────────────────────────────
+type Review = {
+  id: string
+  name: string
+  rating: number
+  text: string
+  created_at: string
+}
+
+function StarRating({ value, interactive = false, onChange }: {
+  value: number
+  interactive?: boolean
+  onChange?: (value: number) => void
+}) {
+  return (
+    <div className="flex items-center gap-1" aria-label={`${value} out of 5 stars`}>
+      {[1, 2, 3, 4, 5].map(star => (
+        <button
+          key={star}
+          type={interactive ? 'button' : undefined}
+          onClick={() => interactive && onChange?.(star)}
+          className={`text-2xl leading-none ${interactive ? 'cursor-pointer hover:scale-110' : 'cursor-default'}`}
+          style={{ color: star <= value ? '#fff' : '#333' }}
+          aria-label={`${star} star${star > 1 ? 's' : ''}`}
+        >
+          ★
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function Reviews() {
+  const ref = useReveal()
+  const [reviews, setReviews] = useState<Review[]>([])
+  const [name, setName] = useState('')
+  const [reviewText, setReviewText] = useState('')
+  const [rating, setRating] = useState(5)
+  const [loading, setLoading] = useState(true)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState('')
+
+  const loadReviews = useCallback(async () => {
+    setLoading(true)
+    const { data, error } = await supabase
+      .from('customer_reviews')
+      .select('id, name, rating, text, created_at')
+      .order('created_at', { ascending: false })
+
+    if (error) {
+      console.error('SUPABASE REVIEWS ERROR:', error)
+      setError('Reviews could not be loaded right now.')
+    } else {
+      setReviews((data ?? []) as Review[])
+      setError('')
+    }
+    setLoading(false)
+  }, [])
+
+  useEffect(() => {
+    loadReviews()
+  }, [loadReviews])
+
+  const average = reviews.length
+    ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
+    : 0
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError('')
+
+    const cleanName = name.trim()
+    const cleanText = reviewText.trim()
+
+    if (!cleanName || !cleanText) return
+
+    setSubmitting(true)
+
+    const { error } = await supabase
+      .from('customer_reviews')
+      .insert({
+        name: cleanName,
+        rating,
+        text: cleanText,
+      })
+
+    if (error) {
+      console.error('SUPABASE REVIEW INSERT ERROR:', error)
+      setError('Your review could not be submitted. Please try again.')
+      setSubmitting(false)
+      return
+    }
+
+    setName('')
+    setReviewText('')
+    setRating(5)
+    setSubmitted(true)
+    setSubmitting(false)
+
+    await loadReviews()
+    window.setTimeout(() => setSubmitted(false), 3500)
+  }
+
+  return (
+    <section id="reviews" className="py-16 sm:py-20 lg:py-32 px-4 sm:px-6 relative">
+      <div className="max-w-7xl mx-auto">
+        <div ref={ref} className="section-reveal mb-14 sm:mb-20">
+          <p className="font-mono text-xs tracking-widest mb-4 text-white">CLIENT FEEDBACK</p>
+          <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-none">
+            What Clients<br />
+            <span style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>Say</span>
+          </h2>
+        </div>
+
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-6 lg:gap-8 items-start">
+          <TiltCard>
+            <div
+              className="rounded-3xl p-6 sm:p-8"
+              style={{ background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)' }}
+            >
+              <div className="flex items-end gap-4 mb-8">
+                <div>
+                  <div className="font-display font-black text-6xl text-white leading-none">
+                    {average.toFixed(1)}
+                  </div>
+                  <p className="font-mono text-xs mt-2" style={{ color: '#666' }}>
+                    {reviews.length} {reviews.length === 1 ? 'REVIEW' : 'REVIEWS'}
+                  </p>
+                </div>
+                <StarRating value={Math.round(average)} />
+              </div>
+
+              <div className="h-px mb-7" style={{ background: 'rgba(255,255,255,0.08)' }} />
+
+              <h3 className="font-display font-black text-2xl text-white mb-2">Leave a Review</h3>
+              <p className="font-body text-sm mb-6" style={{ color: '#888' }}>
+                Rate your experience and tell us what you think.
+              </p>
+
+              {submitted ? (
+                <div className="rounded-2xl p-5 text-center" style={{ background: 'rgba(255,255,255,0.05)' }}>
+                  <div className="text-white font-display font-black text-lg">Review submitted</div>
+                  <p className="font-body text-sm mt-1" style={{ color: '#888' }}>
+                    Thank you for your feedback.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div>
+                    <label className="font-mono text-xs tracking-wider block mb-2 text-white">NAME</label>
+                    <input
+                      value={name}
+                      onChange={e => setName(e.target.value)}
+                      placeholder="Your name"
+                      required
+                      maxLength={60}
+                      className="w-full rounded-xl px-4 py-3 text-sm outline-none text-white"
+                      style={{
+                        background: 'rgba(255,255,255,0.04)',
+                        border: '1px solid rgba(255,255,255,0.12)',
+                      }}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="font-mono text-xs tracking-wider block mb-2 text-white">RATING</label>
+                    <StarRating value={rating} interactive onChange={setRating} />
+                  </div>
+
+                  <div>
+                    <label className="font-mono text-xs tracking-wider block mb-2 text-white">REVIEW</label>
+                    <textarea
+                      value={reviewText}
+                      onChange={e => setReviewText(e.target.value)}
+                      placeholder="Tell us about your experience..."
+                      required
+                      maxLength={500}
+                      className="w-full rounded-xl px-4 py-3 text-sm outline-none text-white min-h-32 resize-none"
+                      style={{
+                        background: 'rgba(255,255,255,0.04)',
+                        border: '1px solid rgba(255,255,255,0.12)',
+                      }}
+                    />
+                  </div>
+
+                  {error && (
+                    <p className="font-body text-sm" style={{ color: '#ff6b6b' }}>{error}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="btn-primary w-full py-3.5 rounded-xl font-display font-black text-sm text-black disabled:opacity-50"
+                  >
+                    <span>{submitting ? 'Submitting...' : 'Submit Review →'}</span>
+                  </button>
+                </form>
+              )}
+            </div>
+          </TiltCard>
+
+          <div className="grid gap-4">
+            {loading ? (
+              <div
+                className="rounded-2xl p-8 text-center"
+                style={{ background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.08)' }}
+              >
+                <p className="font-mono text-xs" style={{ color: '#666' }}>LOADING REVIEWS...</p>
+              </div>
+            ) : reviews.length === 0 ? (
+              <div
+                className="rounded-2xl p-8 text-center"
+                style={{ background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.08)' }}
+              >
+                <p className="font-body text-sm" style={{ color: '#888' }}>
+                  No reviews yet. Be the first to leave one.
+                </p>
+              </div>
+            ) : (
+              reviews.map(review => (
+                <div
+                  key={review.id}
+                  className="rounded-2xl p-5 sm:p-6"
+                  style={{ background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.08)' }}
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    <div>
+                      <h4 className="font-display font-black text-lg text-white">{review.name}</h4>
+                      <p className="font-mono text-[10px] tracking-wider mt-1" style={{ color: '#555' }}>
+                        {new Date(review.created_at).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <StarRating value={review.rating} />
+                  </div>
+                  <p className="font-body text-sm leading-relaxed" style={{ color: '#aaa' }}>
+                    “{review.text}”
+                  </p>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // ── Contact ───────────────────────────────────────────────────────────────────
 function Contact() {
   const ref = useReveal()
@@ -1486,6 +1741,7 @@ export default function App() {
       <Work />
       <Process />
       <About />
+      <Reviews />
       <Contact />
       <Footer isLight={isLight} />
     </div>
