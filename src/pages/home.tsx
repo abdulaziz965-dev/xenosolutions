@@ -1446,6 +1446,38 @@ lg:text-7xl text-white leading-none mb-4">
           ))}
         </div>
 
+        <div className="flex items-center justify-center gap-4 mt-10 mb-10">
+          <a
+            href="https://www.facebook.com/share/1C84wpKeKJ/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+          >
+            <span className="text-sm font-bold">f</span>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/groups/4138801"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+          >
+            <span className="text-sm font-bold">in</span>
+          </a>
+
+          <a
+            href="https://youtube.com/@xenosys.for.web.solutions?si=_St7MTeDGEl3LDen"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+          >
+            <span className="text-sm font-bold">▶</span>
+          </a>
+        </div>
+
         <TiltCard>
           <div className="rounded-3xl p-6 sm:p-5
 lg:p-12"
