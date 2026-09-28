@@ -206,10 +206,20 @@ form{ display:flex; flex-direction:column; gap:18px; }
 .submit-btn{ background:linear-gradient(100deg,var(--c1),var(--c2)); color:#150F1A; border:none; padding:15px; border-radius:8px; font-weight:700; font-size:15px; cursor:pointer; font-family:inherit; }
 
 footer{ border-top:1px solid var(--line); padding:50px 0; background:#150F1A; position:relative; z-index:8; }
-.foot-grid{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+.foot-grid{ display:grid; grid-template-columns:minmax(0,1fr) auto auto; align-items:center; gap:28px; }
 .foot-links{ display:flex; gap:24px; flex-wrap:wrap; }
 .foot-links a{ font-size:13.5px; color:var(--ink-soft); }
 .foot-links a:hover{ color:var(--ink); }
+.footer-contact{ display:grid; gap:7px; margin-top:18px; font-size:13px; }
+.footer-contact a{ color:var(--ink-soft); }
+.footer-contact a:hover{ color:var(--ink); }
+.footer-photo{ width:min(220px,100%); height:156px; border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+.footer-photo img{ width:100%; height:100%; object-fit:cover; }
+.map-box{ display:block; width:min(310px,100%); border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--bg2); }
+.map-preview{ height:125px; overflow:hidden; background:linear-gradient(rgba(21,15,26,.18),rgba(21,15,26,.55)), repeating-linear-gradient(35deg, transparent 0 17px, rgba(244,236,224,.1) 18px 19px), repeating-linear-gradient(-35deg, transparent 0 25px, rgba(155,124,255,.14) 26px 27px), #211a2b; }
+.map-preview iframe{ display:block; width:100%; height:100%; border:0; opacity:.82; filter:saturate(.7) contrast(1.05); }
+.map-label{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 15px; color:var(--ink); font-size:13px; font-weight:600; }
+.map-label span:last-child{ color:var(--c1); font-size:12px; }
 .copyright{ font-size:13px; color:var(--ink-soft); }
 
 .split{ overflow:hidden; display:inline-block; }
@@ -244,7 +254,8 @@ h1,h2,h3,h4,p,a,span{ max-width:100%; overflow-wrap:anywhere; }
   .work-details h3{ font-size:2.7rem; }
   .work-details > p:not(.eyebrow):not(.detail-label){ font-size:15px; }
   .contact-list{ grid-template-columns:1fr; }
-  .foot-grid{ padding-left:18px; padding-right:18px; align-items:flex-start; flex-direction:column; }
+  .foot-grid{ padding-left:18px; padding-right:18px; grid-template-columns:1fr; align-items:flex-start; }
+  .footer-photo,.map-box{ width:100%; max-width:360px; }
   .foot-links{ gap:12px 18px; }
 }
 </style>
@@ -457,8 +468,19 @@ h1,h2,h3,h4,p,a,span{ max-width:100%; overflow-wrap:anywhere; }
 
 <footer>
   <div class="wrap foot-grid">
-    <span class="copyright">&copy; 2026 Xenosys Solutions</span>
-    <div class="foot-links"><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a><a href="/gm-message">GM Message</a><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms &amp; Conditions</a></div>
+    <div>
+      <span class="copyright">&copy; 2026 Xenosys Solutions</span>
+      <div class="foot-links"><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a><a href="/gm-message">GM Message</a><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms &amp; Conditions</a></div>
+      <div class="footer-contact">
+        <a href="https://wa.me/97470643918?text=Hello%20i%20wanna%20Enquire%20about%20XenoSys" target="_blank" rel="noreferrer">WhatsApp: +974 70643918</a>
+        <a href="mailto:info@Xenosysweb.com?subject=Enquiry%20about%20XenoSys&amp;body=Hello%20i%20wanna%20Enquire%20about%20XenoSys">Email: info@Xenosysweb.com</a>
+      </div>
+    </div>
+    <div class="footer-photo"><img src="/icono-view.jpeg" alt="Icono View office reception"></div>
+    <a class="map-box" href="https://maps.app.goo.gl/1AyqAc2eTGRFqW8B7" target="_blank" rel="noreferrer" aria-label="Open Xenosys location in Google Maps">
+      <div class="map-preview"><iframe src="https://www.google.com/maps?q=Icono+Business+Center+%26+Icono+View+Offices,+Doha&z=17&output=embed" title="Icono Business Center and Icono View Offices on Google Maps" loading="lazy"></iframe></div>
+      <div class="map-label"><span>Find us on Google Maps</span><span>Open &rarr;</span></div>
+    </a>
   </div>
 </footer>
 
