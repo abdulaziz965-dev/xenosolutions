@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 export default function NotFound() {
   return (
     <div
+      className="document-page document-page-notfound"
       style={{
         background: "#000",
         color: "#fff",

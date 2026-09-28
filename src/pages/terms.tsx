@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 export default function Terms() {
   return (
     <div
+      className="document-page"
       style={{
         background: "#000",
         color: "#fff",

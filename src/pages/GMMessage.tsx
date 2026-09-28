@@ -11,11 +11,11 @@ export default function GMMessage() {
   };
 
   return (
-    <main style={{ background: "#fff", color: "#111", minHeight: "100vh", fontFamily: "Outfit, sans-serif" }}>
+    <main className="document-page document-page-gm" style={{ background: "#fff", color: "#111", minHeight: "100vh", fontFamily: "Outfit, sans-serif" }}>
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-10 lg:py-16">
-        <Link to="/" style={{ color: "#666", textDecoration: "none", display: "inline-block", marginBottom: "30px" }}>
+        <a href="/" style={{ color: "#111", textDecoration: "none", display: "inline-block", marginBottom: "30px" }}>
           ← Back to Home
-        </Link>
+        </a>
 
         {/* Office image near the top */}
         <div style={{ width: "100%", marginBottom: "60px", borderRadius: "28px", overflow: "hidden", border: "1px solid #e5e5e5", boxShadow: "0 15px 45px rgba(0,0,0,.08)" }}>
@@ -52,7 +52,7 @@ export default function GMMessage() {
           {[["30+", "Years Experience"], ["6", "Countries"], ["4", "Languages"], ["100%", "Client Focus"]].map(([num, label]) => (
             <div key={label} style={{ ...card, padding: "clamp(20px,3vw,35px)", textAlign: "center" }}>
               <h2 style={{ fontSize: "42px", marginBottom: "10px" }}>{num}</h2>
-              <p style={{ color: "#777" }}>{label}</p>
+              <p style={{ color: "#141414" }}>{label}</p>
             </div>
           ))}
         </div>
