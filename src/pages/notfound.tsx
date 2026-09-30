@@ -1,61 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import Shell from '../components/Shell'
+import useDocumentMeta from '../hooks/useDocumentMeta'
+import { PAGE_META } from '../seo'
+import { useChromeLang } from '../i18n/LanguageProvider'
 
 export default function NotFound() {
+  const ctx = useChromeLang()
+  useDocumentMeta({ ...PAGE_META.notFound, noindex: true })
+
   return (
-    <div
-      className="document-page document-page-notfound"
-      style={{
-        background: "#000",
-        color: "#fff",
-        minHeight: "100vh",
-        display: "grid",
-        placeItems: "center",
-        textAlign: "center",
-        padding: "24px",
-      }}
-    >
-      <div>
-        <h1
-          style={{
-            fontSize: "10rem",
-            fontWeight: 900,
-            margin: 0,
-            color: "transparent",
-            WebkitTextStroke: "2px white",
-          }}
-        >
-          404
-        </h1>
-
-        <h2 style={{ marginTop: 20 }}>
-          This page doesn't exist.
-        </h2>
-
-        <p
-          style={{
-            color: "#888",
-            maxWidth: "500px",
-            margin: "20px auto 40px",
-          }}
-        >
-          The page you're looking for may have been moved, renamed,
-          or never existed.
-        </p>
-
-        <Link
-          to="/"
-          style={{
-            color: "#000",
-            background: "#fff",
-            padding: "14px 32px",
-            borderRadius: "999px",
-            textDecoration: "none",
-            fontWeight: 700,
-          }}
-        >
-          Back to Home
-        </Link>
-      </div>
-    </div>
-  );
+    <Shell ctx={ctx} englishOnly>
+      <section className="container not-found">
+        <p className="not-found-code" aria-hidden="true">404</p>
+        <h1>This page does not exist</h1>
+        <p>It may have been moved, or the link has a typo.</p>
+        <Link className="btn btn-primary btn-lg" to={ctx.home}>Go to the home page</Link>
+      </section>
+    </Shell>
+  )
 }

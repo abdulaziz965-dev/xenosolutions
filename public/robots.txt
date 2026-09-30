@@ -1,0 +1,5 @@
+# Every crawler (Google, Bing, AI assistants) may read every page.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.xenosysweb.com/sitemap.xml
