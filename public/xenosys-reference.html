@@ -191,21 +191,6 @@ nav a.cta{border:1px solid var(--ink); padding:9px 20px; border-radius:30px;}
 .about-panel .row span:first-child{ color:var(--ink-soft); }
 @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
 
-.rev-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-.rev-card{ border:1px solid var(--line); border-radius:14px; padding:28px; background:var(--bg2); }
-.rev-stars{ color:var(--c1); font-size:14px; letter-spacing:2px; }
-.rev-card p.txt{ font-family:'Fraunces',serif; font-style:italic; font-size:17px; line-height:1.55; margin-top:16px; }
-.rev-card .who{ font-size:13px; color:var(--ink-soft); margin-top:18px; }
-.review-empty{ grid-column:1 / -1; border:1px solid var(--line); border-radius:14px; padding:28px; color:var(--ink-soft); background:var(--bg2); }
-@media (max-width:860px){ .rev-grid{grid-template-columns:1fr;} }
-.reviews-live-layout{ display:grid; grid-template-columns:minmax(0,1.5fr) minmax(260px,.7fr); gap:28px; align-items:start; }
-.review-form{ display:flex; flex-direction:column; gap:14px; border:1px solid var(--line); border-radius:14px; padding:24px; background:var(--bg2); }
-.review-form h3{ font-size:24px; }
-.review-form input,.review-form select,.review-form textarea{ width:100%; border:1px solid var(--line); border-radius:8px; padding:12px 14px; background:var(--bg); color:var(--ink); outline:0; }
-.review-form input::placeholder,.review-form textarea::placeholder{ color:var(--soft); }
-.form-status{ min-height:18px; color:var(--soft); font-size:13px; }
-@media (max-width:900px){ .reviews-live-layout{ grid-template-columns:1fr; } }
-
 .contact-grid{ display:grid; grid-template-columns:1fr 1.15fr; gap:60px; }
 .dept-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0 20px; }
 .dept-row{ padding:13px 0; border-top:1px solid var(--line); font-size:13.5px; }
@@ -285,7 +270,6 @@ h1,h2,h3,h4,p,a,span{ max-width:100%; overflow-wrap:anywhere; }
     <a href="#services" data-hover>Services</a>
     <a href="#work" data-hover>Work</a>
     <a href="#about" data-hover>About</a>
-    <a href="#reviews" data-hover>Reviews</a>
     <a href="/gm-message" data-hover>GM Message</a>
     <a href="/privacy-policy" data-hover>Privacy Policy</a>
     <a href="/terms" data-hover>Terms</a>
@@ -297,7 +281,6 @@ h1,h2,h3,h4,p,a,span{ max-width:100%; overflow-wrap:anywhere; }
   <a href="#services">Services</a>
   <a href="#work">Work</a>
   <a href="#about">About</a>
-  <a href="#reviews">Reviews</a>
   <a href="#contact">Contact</a>
   <a href="/gm-message">GM Message</a>
   <a href="/privacy-policy">Privacy Policy</a>
@@ -436,23 +419,6 @@ h1,h2,h3,h4,p,a,span{ max-width:100%; overflow-wrap:anywhere; }
     </div>
   </section>
 
-  <section class="stack-card" id="reviews" style="z-index:6; background:#291F33; --stick-top:172px;">
-    <div class="wrap">
-      <div class="sec-head"><h2>What clients say</h2></div>
-      <div class="reviews-live-layout">
-      <div class="rev-grid" id="reviewGrid"><p class="review-empty">Loading reviews...</p></div>
-      <form class="review-form" id="reviewForm">
-        <h3>Leave a review</h3>
-        <input name="name" type="text" placeholder="Your name" required maxlength="60">
-        <select name="rating" required><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select>
-        <textarea name="text" rows="4" placeholder="Tell us about your experience..." required maxlength="500"></textarea>
-        <button class="submit-btn" type="submit">Submit review</button>
-        <p class="form-status" id="reviewStatus" role="status"></p>
-      </form>
-      </div>
-    </div>
-  </section>
-
   <section class="stack-card" id="contact" style="z-index:7; background:#2C2237; --stick-top:196px;">
     <div class="wrap">
       <div class="sec-head"><p class="eyebrow">Let's work together</p><h2>Start a project</h2><p>Tell us what you're building. We'll respond within 24 hours.</p></div>
@@ -586,34 +552,6 @@ const supabaseKey = runtimeConfig.get('supabaseKey');
 const supabaseClient = supabaseUrl && supabaseKey && window.supabase
   ? window.supabase.createClient(supabaseUrl, supabaseKey)
   : null;
-const reviewGrid = document.getElementById('reviewGrid');
-const reviewStatus = document.getElementById('reviewStatus');
-const reviewForm = document.getElementById('reviewForm');
-
-function escapeHtml(value) {
-  return String(value).replace(/[&<>'"]/g, character => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' }[character]));
-}
-
-async function loadReviews() {
-  if (!supabaseClient || !reviewGrid) { reviewGrid.innerHTML = '<p class="review-empty">Reviews are unavailable right now.</p>'; return; }
-  const { data, error } = await supabaseClient.from('customer_reviews').select('id, name, rating, text, created_at').order('created_at', { ascending:false });
-  if (error || !data || !data.length) { reviewGrid.innerHTML = '<p class="review-empty">No reviews yet. Be the first to leave one.</p>'; return; }
-  reviewGrid.innerHTML = data.map(review => `<article class="rev-card"><div class="rev-stars">${'&#9733;'.repeat(Number(review.rating) || 0)}</div><p class="txt">&quot;${escapeHtml(review.text)}&quot;</p><div class="who">${escapeHtml(review.name)} &middot; ${new Date(review.created_at).toLocaleDateString()}</div></article>`).join('');
-}
-loadReviews();
-
-reviewForm.addEventListener('submit', async function(e){
-  e.preventDefault();
-  if (!supabaseClient) { reviewStatus.textContent = 'Reviews are unavailable right now.'; return; }
-  const formData = new FormData(reviewForm);
-  reviewStatus.textContent = 'Submitting...';
-  const { error } = await supabaseClient.from('customer_reviews').insert({ name:formData.get('name'), rating:Number(formData.get('rating')), text:formData.get('text') });
-  if (error) { reviewStatus.textContent = 'Your review could not be submitted.'; return; }
-  reviewForm.reset();
-  reviewStatus.textContent = 'Review submitted. Thank you.';
-  loadReviews();
-});
-
 const contactForm = document.getElementById('contactForm');
 const contactStatus = document.getElementById('contactStatus');
 const emailConfig = {
