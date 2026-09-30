@@ -1,85 +1,46 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Navigate, Route, Routes, useParams } from 'react-router-dom'
+import ScrollManager from './components/ScrollManager'
+import { DEFAULT_LANG, getLang, homePath, isAvailableLang } from './i18n'
+import { LanguageProvider, useLanguagePreference } from './i18n/LanguageProvider'
+import GMMessage from './pages/GMMessage'
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import Terms from './pages/Terms'
 
-import PrivacyPolicy from "./pages/privacyploicy";
-import Terms from "./pages/terms";
-import NotFound from "./pages/notfound";
-import GMMessage from "./pages/GMMessage";
-
-function ReferenceHome() {
-  const referenceConfig = new URLSearchParams({
-    supabaseUrl: import.meta.env.VITE_SUPABASE_URL ?? "",
-    supabaseKey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? "",
-    emailServiceId: import.meta.env.VITE_EMAILJS_SERVICE_ID ?? "",
-    emailTemplateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? "",
-    emailPublicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? "",
-  }).toString();
-
-  return (
-    <iframe
-      title="Xenosys Solutions"
-      src={`/xenosys-reference.html?${referenceConfig}`}
-      style={{
-        display: "block",
-        width: "100%",
-        height: "100vh",
-        minHeight: "100vh",
-        border: 0,
-      }}
-    />
-  );
+/** "/" is English. Visitors who saved another language are sent to it (index.html does this before load too). */
+function RootHome() {
+  const { saved, ready } = useLanguagePreference()
+  if (ready && saved && saved !== DEFAULT_LANG) return <Navigate to={homePath(saved)} replace />
+  return <Home ctx={getLang(DEFAULT_LANG)} />
 }
 
-function ReferenceShell({ children }: { children: React.ReactNode }) {
-  const isGMMessage = window.location.pathname === "/gm-message";
-
-  return (
-    <div className="reference-shell">
-      <header className="site-header">
-        {isGMMessage ? (
-          <Link to="/" className="nav-cta gm-back-home">← Back to Home</Link>
-        ) : (
-          <Link to="/" className="brand">
-            <img src="/logo.png" alt="Xenosys Solutions" />
-          </Link>
-        )}
-        <nav className="desktop-nav">
-          {!isGMMessage && <>
-            <Link to="/#services">Services</Link>
-            <Link to="/#work">Work</Link>
-            <Link to="/#about">About</Link>
-            <Link to="/#reviews">Reviews</Link>
-          </>}
-          <Link className="nav-cta" to="/#contact">Start a project</Link>
-        </nav>
-      </header>
-      {children}
-      <footer>
-        <div className="wrap footer-row">
-          <span>© 2026 Xenosys Solutions</span>
-          <div>
-            <Link to="/#services">Services</Link>
-            <Link to="/#work">Work</Link>
-            <Link to="/#about">About</Link>
-            <Link to="/#contact">Contact</Link>
-            <Link to="/privacy-policy">Privacy Policy</Link>
-            <Link to="/terms">Terms &amp; Conditions</Link>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
+/** /ar, /hi, /ur, /ml, /bn, /ne show the home page in that language. Unknown codes show the 404 page. */
+function LanguageHome() {
+  const { lang } = useParams()
+  if (lang === DEFAULT_LANG) return <Navigate to="/" replace />
+  if (!isAvailableLang(lang)) return <NotFound />
+  return <Home ctx={getLang(lang)} />
 }
 
-export default function App() {
+/**
+ * All pages. The router around it differs: BrowserRouter in the browser (main.tsx),
+ * StaticRouter when pages are pre-rendered at build time (entry-server.tsx).
+ */
+export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <LanguageProvider>
+      <ScrollManager />
       <Routes>
-        <Route path="/" element={<ReferenceHome />} />
-        <Route path="/privacy-policy" element={<ReferenceShell><PrivacyPolicy /></ReferenceShell>} />
-        <Route path="/terms" element={<ReferenceShell><Terms /></ReferenceShell>} />
-        <Route path="/gm-message" element={<ReferenceShell><GMMessage /></ReferenceShell>} />
-        <Route path="*" element={<ReferenceShell><NotFound /></ReferenceShell>} />
+        <Route path="/" element={<RootHome />} />
+        <Route path="/gm-message" element={<GMMessage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/:lang" element={<LanguageHome />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
-  );
+    </LanguageProvider>
+  )
 }
+
+export default AppRoutes

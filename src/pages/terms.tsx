@@ -1,84 +1,60 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import Icon from '../components/Icon'
+import Shell from '../components/Shell'
+import { SITE } from '../data/site'
+import useDocumentMeta from '../hooks/useDocumentMeta'
+import { PAGE_META } from '../seo'
+import { useChromeLang } from '../i18n/LanguageProvider'
 
 export default function Terms() {
-  return (
-    <div
-      className="document-page"
-      style={{
-        background: "#000",
-        color: "#fff",
-        minHeight: "100vh",
-        padding: "80px 24px",
-      }}
-    >
-      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-        <Link
-          to="/"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            color: "#666",
-            textDecoration: "none",
-            marginBottom: "24px",
-            fontSize: "14px",
-          }}
-        >
-          <span>← Back to Home</span>
-        </Link>
+  const ctx = useChromeLang()
+  useDocumentMeta({ ...PAGE_META.terms })
 
-        <p style={{ color: "#666", letterSpacing: "3px", fontSize: "12px" }}>
-          LEGAL
+  return (
+    <Shell ctx={ctx} englishOnly>
+      <article className="container doc">
+        <Link className="back-link" to={ctx.home}><Icon name="back" size={18} />Back to home</Link>
+        <h1>Terms and conditions</h1>
+        <p className="updated">Last updated: September 2026</p>
+
+        <h2>Accepting these terms</h2>
+        <p>By using this website, you agree to these terms and to all applicable laws.</p>
+
+        <h2>Our services</h2>
+        <p>
+          Xenosys Solutions provides website design and development, hosting, debugging, search engine optimisation,
+          custom ERP and POS software, digital marketing, consulting and related digital services.
         </p>
 
-        <h1 style={{ fontSize: "64px", fontWeight: 900, margin: "20px 0 40px" }}>
-          Terms & Conditions
-        </h1>
+        <h2>Intellectual property</h2>
+        <p>
+          All content, branding, graphics and source code on this website belong to Xenosys Solutions unless stated
+          otherwise. Websites we build for clients are covered by the agreement for that project.
+        </p>
 
-        <div style={{ color: "#b3b3b3", lineHeight: 1.9 }}>
+        <h2>No guaranteed results</h2>
+        <p>
+          Our services cover the website and the work described in your package or agreement. We do not promise or
+          guarantee any number of customers, enquiries, sales, website visits or search engine rankings.
+        </p>
 
-          <h2 style={{ color: "#fff" }}>Acceptance of Terms</h2>
-          <p>
-            By accessing this website, you agree to comply with these Terms &
-            Conditions and all applicable laws.
-          </p>
+        <h2>Project payments</h2>
+        <p>
+          Client projects may be paid in milestones. We deliver the final project after the agreed payments are complete.
+        </p>
 
-          <h2 style={{ color: "#fff", marginTop: 40 }}>Services</h2>
-          <p>
-            XenosysSolutions provides website development, hosting, debugging,
-            consulting and related digital services.
-          </p>
+        <h2>Limitation of liability</h2>
+        <p>
+          Xenosys Solutions is not liable for indirect or consequential damages arising from the use of this website or
+          our services.
+        </p>
 
-          <h2 style={{ color: "#fff", marginTop: 40 }}>Intellectual Property</h2>
-          <p>
-            All content, branding, graphics and source code on this website
-            remain the property of XenosysSolutions unless otherwise stated.
-          </p>
-
-          <h2 style={{ color: "#fff", marginTop: 40 }}>Project Payments</h2>
-          <p>
-            Client projects may require milestone-based payments. Final project
-            delivery occurs after agreed payments are completed.
-          </p>
-
-          <h2 style={{ color: "#fff", marginTop: 40 }}>Limitation of Liability</h2>
-          <p>
-            XenosysSolutions shall not be liable for indirect or consequential
-            damages arising from the use of this website or our services.
-          </p>
-
-          <h2 style={{ color: "#fff", marginTop: 40 }}>Contact</h2>
-          <p>
-            Questions regarding these terms may be submitted through our Contact
-            page.
-          </p>
-
-          <p style={{ marginTop: 60, color: "#666" }}>
-            Last Updated: August 2026
-          </p>
-
-        </div>
-      </div>
-    </div>
-  );
+        <h2>Contact</h2>
+        <p>
+          Questions about these terms can be sent to{' '}
+          <a href={`mailto:${SITE.emails.general}`}>{SITE.emails.general}</a>.
+        </p>
+      </article>
+    </Shell>
+  )
 }

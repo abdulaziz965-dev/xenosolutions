@@ -1,0 +1,16 @@
+# Cloudflare Pages redirects (301 = permanent, so Google updates its index)
+
+# English lives at the root
+/en                /                 301
+/en/               /                 301
+
+# Remove trailing slashes so each page has one address
+/ar/               /ar               301
+/hi/               /hi               301
+/ur/               /ur               301
+/ml/               /ml               301
+/bn/               /bn               301
+/ne/               /ne               301
+/gm-message/       /gm-message       301
+/privacy-policy/   /privacy-policy   301
+/terms/            /terms            301
