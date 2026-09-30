@@ -128,6 +128,7 @@ nav a.cta{border:1px solid var(--ink); padding:9px 20px; border-radius:30px;}
 .work-card.previous{ transform:translateX(calc(-50% - 430px)) scale(.82); }
 .work-card.next{ transform:translateX(calc(-50% + 430px)) scale(.82); }
 .work-card h3{ font-size:32px; margin-top:20px; }
+.work-number{ display:block; color:var(--c1); font-size:12px; letter-spacing:2px; font-weight:600; }
 .work-card .subtitle{ color:var(--c1); font-size:13px; margin-top:4px; }
 .work-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
 .work-tags span{ font-size:11.5px; color:var(--ink-soft); border:1px solid var(--line); padding:4px 10px; border-radius:20px; }
@@ -157,6 +158,20 @@ nav a.cta{border:1px solid var(--ink); padding:9px 20px; border-radius:30px;}
 @media (max-width:760px){ .work-grid{ min-height:calc(100vh - 230px); } .work-card{ width:min(460px,72vw); padding:18px; } .work-card .reveal-frame{ min-height:0; } .work-card.previous{ transform:translateX(calc(-50% - 150px)) scale(.8); } .work-card.next{ transform:translateX(calc(-50% + 150px)) scale(.8); } }
 @media (max-width:560px){ .work-grid{ min-height:430px; } .work-card{ width:78vw; } .work-card.previous{ transform:translateX(calc(-50% - 120px)) scale(.72); } .work-card.next{ transform:translateX(calc(-50% + 120px)) scale(.72); } }
 @media (max-width:900px){ .work-layout{ grid-template-columns:1fr; gap:20px; } .work-details{ min-height:0; border-left:0; border-top:1px solid var(--line); padding:26px 0 0; } .work-details > p:not(.eyebrow):not(.detail-label){ max-width:60ch; } }
+
+.work-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; min-height:0; overflow:visible; }
+.work-card,.work-card.active,.work-card.previous,.work-card.next{ position:relative; top:auto; left:auto; width:100%; padding:28px; opacity:1; pointer-events:auto; transform:none; filter:none; cursor:default; }
+.work-card .reveal-frame{ min-height:220px; }
+.work-selector{ display:none; }
+.work-links{ display:grid; grid-column:1 / -1; gap:0; }
+.work-links a{ display:flex; align-items:center; justify-content:space-between; gap:20px; padding:24px 0; border-top:1px solid var(--line); color:var(--ink); font-family:'Fraunces',serif; font-size:clamp(1.5rem,3vw,2.5rem); transition:color .2s ease, padding-left .2s ease; }
+.work-links a:last-child{ border-bottom:1px solid var(--line); }
+.work-links a:hover{ padding-left:12px; color:var(--c1); }
+.work-links small{ color:var(--c1); font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:2px; }
+.work-card,.work-details{ display:none; }
+.work-layout{ display:block; }
+@media (max-width:900px){ .work-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:560px){ .work-grid{ grid-template-columns:1fr; } .work-card,.work-card.active,.work-card.previous,.work-card.next{ padding:16px; } }
 
 .process-grid{ display:grid; grid-template-columns:repeat(4,1fr); }
 .process-step{ padding:0 26px 0 0; border-left:1px solid var(--line); padding-left:26px; }
@@ -333,58 +348,59 @@ h1,h2,h3,h4,p,a,span{ max-width:100%; overflow-wrap:anywhere; }
       <div class="work-layout">
       <div>
       <div class="work-grid">
-        <div class="work-card active" data-work-index="0">
-          <div class="reveal-frame"><iframe src="https://amine-khatim.vercel.app/" title="Amine Khatim coach website" loading="lazy" tabindex="-1"></iframe></div>
-          <h3>Amine Khatim</h3><p class="subtitle">Football coaching &amp; tactical analysis</p>
-          <div class="work-tags"><span>Sports</span><span>Coaching</span></div>
+        <div class="work-links">
+          <a href="https://bilal-for-building-maintenance-cont.vercel.app/" target="_blank" rel="noreferrer"><span><small>01</small>&nbsp; Bilal for Building Maintenance</span><span aria-hidden="true">↗</span></a>
+          <a href="https://propert-trading.vercel.app/" target="_blank" rel="noreferrer"><span><small>02</small>&nbsp; Propert Trading</span><span aria-hidden="true">↗</span></a>
+          <a href="https://mohan-sk-sports-academy.vercel.app/" target="_blank" rel="noreferrer"><span><small>03</small>&nbsp; Mohan SK Sports Academy</span><span aria-hidden="true">↗</span></a>
+          <a href="https://al-askari-laundry.vercel.app/" target="_blank" rel="noreferrer"><span><small>04</small>&nbsp; Al Askari Laundry</span><span aria-hidden="true">↗</span></a>
+          <a href="https://amine-khatim.vercel.app/" target="_blank" rel="noreferrer"><span><small>05</small>&nbsp; Amine Khatim</span><span aria-hidden="true">↗</span></a>
         </div>
-        <div class="work-card next" data-work-index="1">
+        <div class="work-card active" data-work-index="0">
           <div class="reveal-frame"><iframe src="https://bilal-for-building-maintenance-cont.vercel.app/" title="Bilal for Building Maintenance and Contracting website" loading="lazy" tabindex="-1"></iframe></div>
-          <h3>Bilal for Building Maintenance</h3><p class="subtitle">Premium maintenance &amp; contracting</p>
+          <span class="work-number">01</span><h3>Bilal for Building Maintenance</h3><p class="subtitle">Premium maintenance &amp; contracting</p>
           <div class="work-tags"><span>Construction</span><span>Corporate</span></div>
         </div>
+        <div class="work-card next" data-work-index="1">
+          <div class="reveal-frame"><iframe src="https://propert-trading.vercel.app/" title="Propert Trading website" loading="lazy" tabindex="-1"></iframe></div>
+          <span class="work-number">02</span><h3>Propert Trading</h3><p class="subtitle">Property trading &amp; business services</p>
+          <div class="work-tags"><span>Property</span><span>Trading</span></div>
+        </div>
         <div class="work-card" data-work-index="2">
-          <div class="reveal-frame"><iframe src="https://involved-trading.vercel.app/" title="Involved Trading and Contracting website" loading="lazy" tabindex="-1"></iframe></div>
-          <h3>Involved Flooring</h3><p class="subtitle">Luxury SPC flooring &amp; fitting</p>
-          <div class="work-tags"><span>Interiors</span><span>Retail</span></div>
+          <div class="reveal-frame"><iframe src="https://mohan-sk-sports-academy.vercel.app/" title="Mohan SK Sports Academy website" loading="lazy" tabindex="-1"></iframe></div>
+          <span class="work-number">03</span><h3>Mohan SK Sports Academy</h3><p class="subtitle">Sports academy &amp; athlete development</p>
+          <div class="work-tags"><span>Sports</span><span>Academy</span></div>
         </div>
         <div class="work-card" data-work-index="3">
-          <div class="reveal-frame"><iframe src="https://lax-fit-pro.vercel.app/" title="LAX FITPRO personal training website" loading="lazy" tabindex="-1"></iframe></div>
-          <h3>LAX FITPRO</h3><p class="subtitle">Personal training &amp; wellness</p>
-          <div class="work-tags"><span>Fitness</span><span>Doha</span></div>
+          <div class="reveal-frame"><iframe src="https://al-askari-laundry.vercel.app/" title="Al Askari Laundry website" loading="lazy" tabindex="-1"></iframe></div>
+          <span class="work-number">04</span><h3>Al Askari Laundry</h3><p class="subtitle">Professional laundry services</p>
+          <div class="work-tags"><span>Laundry</span><span>Services</span></div>
         </div>
-        <div class="work-card" data-work-index="4">
-          <div class="reveal-frame"><iframe src="https://manikgonj-contracting-and-hospitali.vercel.app/" title="Manikgonj contracting and hospitality services website" loading="lazy" tabindex="-1"></iframe></div>
-          <h3>Manikgonj</h3><p class="subtitle">Marble care &amp; hospitality services</p>
-          <div class="work-tags"><span>Hospitality</span><span>Services</span></div>
-        </div>
-        <div class="work-card previous" data-work-index="5">
-          <div class="reveal-frame"><iframe src="https://al-juzraa.vercel.app/" title="Al Juzraa auto electrician and mechanical garage website" loading="lazy" tabindex="-1"></iframe></div>
-          <h3>Al Juzraa Auto</h3><p class="subtitle">Auto diagnostics &amp; mechanical repair</p>
-          <div class="work-tags"><span>Automotive</span><span>Workshop</span></div>
+        <div class="work-card previous" data-work-index="4">
+          <div class="reveal-frame"><iframe src="https://amine-khatim.vercel.app/" title="Amine Khatim coach website" loading="lazy" tabindex="-1"></iframe></div>
+          <span class="work-number">05</span><h3>Amine Khatim</h3><p class="subtitle">Football coaching &amp; tactical analysis</p>
+          <div class="work-tags"><span>Sports</span><span>Coaching</span></div>
         </div>
       </div>
       <div class="work-selector" aria-label="Select project">
         <button class="work-arrow" id="workPrev" type="button" aria-label="Previous project">&#8592;</button>
         <div class="work-dots">
-          <button class="work-dot active" type="button" data-work-dot="0" aria-label="Show Amine Khatim"></button>
-          <button class="work-dot" type="button" data-work-dot="1" aria-label="Show Bilal for Building Maintenance"></button>
-          <button class="work-dot" type="button" data-work-dot="2" aria-label="Show Involved Flooring"></button>
-          <button class="work-dot" type="button" data-work-dot="3" aria-label="Show LAX FITPRO"></button>
-          <button class="work-dot" type="button" data-work-dot="4" aria-label="Show Manikgonj"></button>
-          <button class="work-dot" type="button" data-work-dot="5" aria-label="Show Al Juzraa Auto"></button>
+          <button class="work-dot active" type="button" data-work-dot="0" aria-label="Show Bilal for Building Maintenance"></button>
+          <button class="work-dot" type="button" data-work-dot="1" aria-label="Show Propert Trading"></button>
+          <button class="work-dot" type="button" data-work-dot="2" aria-label="Show Mohan SK Sports Academy"></button>
+          <button class="work-dot" type="button" data-work-dot="3" aria-label="Show Al Askari Laundry"></button>
+          <button class="work-dot" type="button" data-work-dot="4" aria-label="Show Amine Khatim"></button>
         </div>
         <button class="work-arrow" id="workNext" type="button" aria-label="Next project">&#8594;</button>
       </div>
       </div>
       <aside class="work-details">
         <p class="eyebrow">Project details</p>
-        <h3 id="workDetailTitle">Amine Khatim</h3>
-        <p id="workDetailAbout">A focused personal brand for a Doha-based football coach, balancing high-performance positioning with clear paths to tactical sessions, qualifications, and career highlights.</p>
+        <h3 id="workDetailTitle">Bilal for Building Maintenance</h3>
+        <p id="workDetailAbout">A premium contracting presence built around trust, clear service categories, and a strong enquiry path for custom aluminium, gates, railings, shades, and exterior structures.</p>
         <div class="detail-rule"></div>
         <p class="detail-label">TECH STACK</p>
-        <div class="detail-tech" id="workDetailTech"><span>Personal Brand</span><span>Sports</span><span>Responsive Design</span></div>
-        <a class="visit-site" id="visitSite" href="https://amine-khatim.vercel.app/" target="_blank" rel="noreferrer" data-hover>Visit Site <span aria-hidden="true">&nbsp;↗</span></a>
+        <div class="detail-tech" id="workDetailTech"><span>Construction</span><span>Services</span><span>Lead Generation</span></div>
+        <a class="visit-site" id="visitSite" href="https://bilal-for-building-maintenance-cont.vercel.app/" target="_blank" rel="noreferrer" data-hover>Visit Site <span aria-hidden="true">&nbsp;↗</span></a>
       </aside>
       </div>
     </div>
@@ -485,6 +501,10 @@ h1,h2,h3,h4,p,a,span{ max-width:100%; overflow-wrap:anywhere; }
 </footer>
 
 <script>
+const servicesSection = document.getElementById('services');
+const workSection = document.getElementById('work');
+if (servicesSection && workSection) servicesSection.parentNode.insertBefore(workSection, servicesSection);
+
 // custom cursor
 const cur = document.getElementById('cursor');
 let mx=0,my=0,cx=0,cy=0;
@@ -527,12 +547,11 @@ document.querySelectorAll('.reveal-frame').forEach(el=>io.observe(el));
 const workCards = Array.from(document.querySelectorAll('.work-card'));
 const workDots = Array.from(document.querySelectorAll('.work-dot'));
 const workDetails = [
-  { title:'Amine Khatim', about:'A focused personal brand for a Doha-based football coach, balancing high-performance positioning with clear paths to tactical sessions, qualifications, and career highlights.', tech:['Personal Brand','Sports','Responsive Design'], url:'https://amine-khatim.vercel.app/' },
   { title:'Bilal for Building Maintenance', about:'A premium contracting presence built around trust, clear service categories, and a strong enquiry path for custom aluminium, gates, railings, shades, and exterior structures.', tech:['Construction','Services','Lead Generation'], url:'https://bilal-for-building-maintenance-cont.vercel.app/' },
-  { title:'Involved Flooring', about:'A visual flooring showcase that makes luxury SPC, herringbone, and laminate solutions feel tangible while guiding Qatar customers toward an instant quote.', tech:['Interior Design','Product Showcase','Conversion'], url:'https://involved-trading.vercel.app/' },
-  { title:'LAX FITPRO', about:'An energetic fitness experience for Doha clients, pairing a bold transformation message with proof points, program discovery, and a direct free-trial booking route.', tech:['Fitness','Personal Training','Booking'], url:'https://lax-fit-pro.vercel.app/' },
-  { title:'Manikgonj', about:'A refined service brand for marble finishing and hospitality work, using a calm visual story to communicate polishing, restoration, and dependable local expertise.', tech:['Hospitality','Marble Services','Local Business'], url:'https://manikgonj-contracting-and-hospitali.vercel.app/' },
-  { title:'Al Juzraa Auto', about:'A high-contrast garage website designed to turn urgent automotive needs into action, with visible workshop offers, diagnostics, repairs, and quick contact options.', tech:['Automotive','Workshop','Service Offers'], url:'https://al-juzraa.vercel.app/' }
+  { title:'Propert Trading', about:'A focused business website for presenting property and trading services with a clear, professional path for prospective clients and partners.', tech:['Property','Trading','Business Services'], url:'https://propert-trading.vercel.app/' },
+  { title:'Mohan SK Sports Academy', about:'An energetic sports academy platform designed to showcase training, athlete development, and opportunities for the next generation of players.', tech:['Sports','Academy','Training'], url:'https://mohan-sk-sports-academy.vercel.app/' },
+  { title:'Al Askari Laundry', about:'A clean, service-led website for a professional laundry brand, making everyday garment care and customer enquiries simple to discover.', tech:['Laundry','Services','Local Business'], url:'https://al-askari-laundry.vercel.app/' },
+  { title:'Amine Khatim', about:'A focused personal brand for a Doha-based football coach, balancing high-performance positioning with clear paths to tactical sessions, qualifications, and career highlights.', tech:['Personal Brand','Sports','Responsive Design'], url:'https://amine-khatim.vercel.app/' }
 ];
 const workDetailTitle = document.getElementById('workDetailTitle');
 const workDetailAbout = document.getElementById('workDetailAbout');
