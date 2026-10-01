@@ -23,7 +23,7 @@ export const customers: Customer[] = [
   },
   {
     id: 'propert',
-    name: 'Propert Design Trading & Contracting',
+    name: 'Alluminium Glass, Marble & UPVC Works',
     initials: 'PD',
     type: 'design',
     url: 'https://propert-trading.vercel.app/',
