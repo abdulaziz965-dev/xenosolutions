@@ -89,7 +89,7 @@ function businessData(lang: LangCode) {
       email: SITE.emails.general,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Icono View Offices',
+        streetAddress: 'Icono Business Center, Holiday Villa Hotel, Muntaza',
         addressLocality: 'Doha',
         addressCountry: 'QA',
       },
