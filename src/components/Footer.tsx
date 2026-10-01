@@ -10,7 +10,7 @@ export default function Footer({ ctx }: { ctx: LangContext }) {
       <div className="container footer-grid">
         <div>
           <Link to={home} className="brand" aria-label="Xenosys Solutions">
-            <img src="/logo-mark.webp" alt="" width="52" height="52" loading="lazy" />
+            <img src="/logo-mark.webp" alt="Xenosys Solutions logo" width="52" height="52" loading="lazy" />
             <span className="brand-text">
               <strong>Xenosys</strong>
               <small>Web Solutions</small>

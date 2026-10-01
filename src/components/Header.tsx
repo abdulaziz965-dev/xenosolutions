@@ -18,7 +18,7 @@ export default function Header({ ctx }: { ctx: LangContext }) {
     <header className="site-header">
       <div className="container header-row">
         <Link to={home} className="brand" aria-label="Xenosys Solutions">
-          <img src="/logo-mark.webp" alt="" width="52" height="52" />
+          <img src="/logo-mark.webp" alt="Xenosys Solutions logo" width="52" height="52" />
           <span className="brand-text">
             <strong>Xenosys</strong>
             <small>Web Solutions</small>

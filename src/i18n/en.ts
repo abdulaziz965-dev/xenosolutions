@@ -3,7 +3,7 @@ const en = {
   meta: {
     title: 'Xenosys Solutions | Website design in Doha, Qatar',
     description:
-      'Professional websites for small businesses in Qatar. Startup Support Package: a complete website with hosting and subdomain for 1 year, QR 99. Chat with us on WhatsApp.',
+      'Professional websites for small businesses in Qatar. A complete website with hosting and subdomain for 1 year: QR 99. Chat with us on WhatsApp.',
   },
   skip: 'Skip to content',
   nav: {
