@@ -131,7 +131,7 @@ const en = {
       marketing: 'Marketing',
     },
     officeTitle: 'Our office',
-    office: 'Icono View Offices, Doha, Qatar',
+    office: 'ICONO Business Center, Holiday Villa Hotel, Muntaza, Doha, Qatar',
     officePhotoAlt: 'Reception of the Icono View office building in Doha',
     openMap: 'Open in Google Maps',
     form: {
