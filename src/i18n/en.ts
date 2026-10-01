@@ -113,7 +113,7 @@ const en = {
     name: 'Mohammed Fazlur Rahman',
     role: 'General Manager, Xenosys Solutions',
     quote: 'Lasting success is built on trust, quality and meaningful partnerships.',
-    facts: ['30+ years of business experience', '16+ years in Qatar', 'Speaks English, Arabic, Urdu and Hindi'],
+    facts: ['30+ years of business experience', '16+ years in Qatar (Government & Semi - Government sectors)', 'Speaks English, Arabic, Urdu and Hindi'],
     read: 'Read his message',
   },
   contact: {
