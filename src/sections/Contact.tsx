@@ -33,14 +33,14 @@ export default function Contact({ t, lang }: { t: Dict; lang: LangCode }) {
                 <Icon name="phone" />
                 <div>
                   <span>{c.call}</span>
-                  <a href={SITE.phoneHref}><bdi dir="ltr">{SITE.phoneDisplay}</bdi></a>
+                  <a href={SITE.phoneHref}><bdi dir="ltr">{SITE.phoneDisplay}</bdi></a>{' '}
                 </div>
               </li>
               <li>
                 <Icon name="mail" />
                 <div>
                   <span>{c.email}</span>
-                  <a href={`mailto:${SITE.emails.general}`} dir="ltr">{SITE.emails.general}</a>
+                  <a href={`mailto:${SITE.emails.general}`} dir="ltr">{SITE.emails.general}</a>{' '}
                   <a href={`mailto:${SITE.emails.sales}`} dir="ltr">{SITE.emails.sales}</a>
                 </div>
               </li>
