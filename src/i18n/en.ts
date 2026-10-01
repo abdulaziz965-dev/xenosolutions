@@ -103,7 +103,7 @@ const en = {
   process: {
     title: 'How it works',
     steps: [
-      { title: 'Message us', text: 'Tell us about your business on WhatsApp. Send your logo and photos if you have them.' },
+      { title: 'Message us', text: 'Please provide us an appointment & your location for our management team to visit you and discuss your requirements in detail. We need your logo photos CR number and business details.' },
       { title: 'We design it', text: 'You see your website first and tell us what to change.' },
       { title: 'Your website goes live', text: 'We put it online, connect your domain and keep helping after launch.' },
     ],
