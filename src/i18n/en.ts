@@ -26,6 +26,7 @@ const en = {
     title: 'A professional website for your business',
     lede: 'We design your website, put it online and set it up for Google search. Tell us about your business on WhatsApp. We reply within 24 hours.',
     seeWork: 'See websites we built',
+    registered: 'Registered in Qatar, CR No.',
     points: ['Office in Doha', 'Reply within 24 hours', 'Help after your website is live'],
     mock: {
       name: 'Your Business',
@@ -71,7 +72,8 @@ const en = {
       'Any startup, for products or services',
     ],
     renewal: 'Renewal after the first year is agreed separately with each client.',
-    small: 'An independent offer from Xenosys Solutions. It is not a government programme. Our inititative is to support small shops & startups in Qatar with their digital needs & support them to be part of DIGITAL QATAR POLICY.',
+    small:
+      'An independent offer from Xenosys Solutions. It is not a government programme. Our initiative is to support small shops and startups in Qatar with their digital needs and help them become part of the Digital Qatar policy.',
   },
   services: {
     title: 'What we do',
@@ -81,7 +83,7 @@ const en = {
       { title: 'Hosting and domain', text: 'We keep your website online, fast and secure with SSL.' },
       { title: 'Fixes and updates', text: 'Website broken or slow? We find the problem and fix it.' },
       { title: 'Google search setup', text: 'We set up your website and business details for Google search.' },
-      { title: 'Billing and stock software', text: 'Custom ERP with Cashier POS: sales & inventory management.' },
+      { title: 'Billing and stock software', text: 'Custom ERP with cashier POS: sales and inventory management.' },
       { title: 'Digital marketing', text: 'We plan and run online campaigns for your business.' },
     ],
   },
@@ -94,17 +96,20 @@ const en = {
     types: {
       hospitality: 'Contracting and hospitality services',
       contracting: 'Building maintenance and contracting',
-      design: 'Alluminium Glass, Marble & UPVC',
+      design: 'Aluminium, glass, marble and UPVC',
       sports: 'Skating for kids',
-      salon: 'Ladies Premium Beauty salon',
-      laundry: 'Laundry - Free Home Delivery',
+      salon: 'Premium ladies beauty salon',
+      laundry: 'Laundry with free home delivery',
       coach: 'Football coach',
     },
   },
   process: {
     title: 'How it works',
     steps: [
-      { title: 'Message us', text: 'Please provide us an appointment & your location for our management team to visit you and discuss your requirements in detail. We need your logo photos CR number and business details.' },
+      {
+        title: 'Message us',
+        text: 'Book an appointment and share your location, and our management team will visit you to discuss your requirements in detail. Please have your logo, photos, CR number and business details ready.',
+      },
       { title: 'We design it', text: 'You see your website first and tell us what to change.' },
       { title: 'Your website goes live', text: 'We put it online, connect your domain and keep helping after launch.' },
     ],
@@ -114,7 +119,11 @@ const en = {
     name: 'Mohammed Fazlur Rahman',
     role: 'General Manager, Xenosys Solutions',
     quote: 'Lasting success is built on trust, quality and meaningful partnerships.',
-    facts: ['30+ years of business experience', '16+ years in Qatar (Government & Semi - Government sectors)', 'Speaks English, Arabic, Urdu and Hindi'],
+    facts: [
+      '30+ years of business experience',
+      '16+ years in Qatar (government and semi-government sectors)',
+      'Speaks English, Arabic, Urdu and Hindi',
+    ],
     read: 'Read his message',
   },
   contact: {
@@ -132,8 +141,8 @@ const en = {
       marketing: 'Marketing',
     },
     officeTitle: 'Our office',
-    office: 'ICONO Business Center, Holiday Villa Hotel, Muntaza, Doha, Qatar',
-    officePhotoAlt: 'Reception of the Icono View office building in Doha',
+    office: 'ICONO Business Center, Holiday Villa Hotel, Muntazah, Doha, Qatar',
+    officePhotoAlt: 'Reception of the ICONO Business Center in Doha',
     openMap: 'Open in Google Maps',
     form: {
       title: 'Send us a message',
