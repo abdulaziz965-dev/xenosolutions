@@ -94,6 +94,7 @@ const ne: Dict = {
     likeThis: 'मलाई पनि यस्तै चाहियो',
     newTab: 'नयाँ ट्याबमा खुल्छ',
     types: {
+      hospitality: 'ठेक्का र आतिथ्य सेवा',
       contracting: 'भवन मर्मत र ठेक्का',
       design: 'डिजाइन, ट्रेडिङ र ठेक्का',
       sports: 'खेलकुद एकेडेमी',

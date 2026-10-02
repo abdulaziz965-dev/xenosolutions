@@ -92,6 +92,7 @@ const en = {
     likeThis: 'I want one like this',
     newTab: 'opens in a new tab',
     types: {
+      hospitality: 'Contracting and hospitality services',
       contracting: 'Building maintenance and contracting',
       design: 'Alluminium Glass, Marble & UPVC',
       sports: 'Skating for kids',

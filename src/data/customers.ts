@@ -2,7 +2,7 @@
 // `type` picks the translated business description from the language files.
 // `image` is optional: put a phone screenshot in /public/work/ (e.g. /work/bilal.webp)
 // and add `image: '/work/bilal.webp'` to show it instead of the initials tile.
-export type CustomerType = 'contracting' | 'design' | 'sports' | 'salon' | 'laundry' | 'coach'
+export type CustomerType = 'contracting' | 'design' | 'sports' | 'salon' | 'laundry' | 'coach' | 'hospitality'
 
 export type Customer = {
   id: string
@@ -14,6 +14,13 @@ export type Customer = {
 }
 
 export const customers: Customer[] = [
+  {
+    id: 'manikgonj',
+    name: 'Manikgonj Contracting and Hospitality Services',
+    initials: 'MC',
+    type: 'hospitality',
+    url: 'https://manikgonj-contracting-and-hospitali.vercel.app/',
+  },
   {
     id: 'bilal',
     name: 'Bilal for Building Maintenance & Contracting',
