@@ -135,6 +135,10 @@ export default function Hero({ ctx }: { ctx: LangContext }) {
             {t.hero.points.map((point) => (
               <li key={point}><Icon name="check" />{point}</li>
             ))}
+            <li>
+              <Icon name="check" />
+              {t.hero.registered} <bdi dir="ltr">{SITE.crNumber}</bdi>
+            </li>
           </ul>
         </div>
          <PhoneMock t={t} src={home} />
