@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import { LanguageStrip } from '../components/LanguageMenu'
 import WireframeGlobe from '../components/WireframeGlobe'
-import {whatsappLink } from '../data/site'
+import { SITE, whatsappLink } from '../data/site'
 import type { Dict, LangContext } from '../i18n'
 
 /** White serrated band on the left, like the 9 points on the Qatari flag. */
