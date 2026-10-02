@@ -87,6 +87,7 @@ function businessData(lang: LangCode) {
       description: getLang(DEFAULT_LANG).t.meta.description,
       telephone: '+97470643918',
       email: SITE.emails.general,
+      identifier: { '@type': 'PropertyValue', propertyID: 'Qatar Commercial Registration', value: SITE.crNumber },
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Icono Business Center, Holiday Villa Hotel, Muntaza',

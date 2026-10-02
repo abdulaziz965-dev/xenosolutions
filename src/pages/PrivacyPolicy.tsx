@@ -15,7 +15,11 @@ export default function PrivacyPolicy() {
       <article className="container doc">
         <Link className="back-link" to={ctx.home}><Icon name="back" size={18} />Back to home</Link>
         <h1>Privacy policy</h1>
-        <p className="updated">Last updated: September 2026</p>
+        <p className="updated">Last updated: October 2026</p>
+        <p>
+          This policy applies to the website of Xenosys Solutions, a company registered in Qatar under Commercial
+          Registration (CR) No. {SITE.crNumber}, with offices at Icono View Offices, Doha.
+        </p>
 
         <h2>Information we collect</h2>
         <p>

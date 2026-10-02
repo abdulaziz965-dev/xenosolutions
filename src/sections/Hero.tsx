@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon'
 import { LanguageStrip } from '../components/LanguageMenu'
 import WireframeGlobe from '../components/WireframeGlobe'
-import { SITE, whatsappLink } from '../data/site'
+import {whatsappLink } from '../data/site'
 import type { Dict, LangContext } from '../i18n'
 
 /** White serrated band on the left, like the 9 points on the Qatari flag. */
@@ -43,7 +43,7 @@ function StatusIcons() {
  * Realistic phone showing the example website (SITE.demoUrl) at true phone width, scaled to fit.
  * Desktop only. The drawn mock underneath shows while the site loads, or if it can't load.
  */
-function PhoneMock({ t }: { t: Dict }) {
+  function PhoneMock({ t, src }: { t: Dict; src: string }) {
   const m = t.hero.mock
   const [showSite, setShowSite] = useState(false)
   const [loaded, setLoaded] = useState(false)
@@ -90,7 +90,7 @@ function PhoneMock({ t }: { t: Dict }) {
             {showSite && (
               <iframe
                 className={loaded ? 'phone-site is-loaded' : 'phone-site'}
-                src={SITE.demoUrl}
+                src={src}
                 title={m.frameTitle}
                 loading="lazy"
                 onLoad={() => setLoaded(true)}
@@ -137,7 +137,7 @@ export default function Hero({ ctx }: { ctx: LangContext }) {
             ))}
           </ul>
         </div>
-        <PhoneMock t={t} />
+         <PhoneMock t={t} src={home} />
       </div>
     </section>
   )

@@ -15,7 +15,11 @@ export default function Terms() {
       <article className="container doc">
         <Link className="back-link" to={ctx.home}><Icon name="back" size={18} />Back to home</Link>
         <h1>Terms and conditions</h1>
-        <p className="updated">Last updated: September 2026</p>
+        <p className="updated">Last updated: October 2026</p>
+        <p>
+          This website is operated by Xenosys Solutions, a company registered in Qatar under Commercial Registration
+          (CR) No. {SITE.crNumber}, with offices at Icono View Offices, Doha.
+        </p>
 
         <h2>Accepting these terms</h2>
         <p>By using this website, you agree to these terms and to all applicable laws.</p>

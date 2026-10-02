@@ -160,6 +160,7 @@ const en = {
     gm: 'Message from the General Manager',
     privacy: 'Privacy policy',
     terms: 'Terms and conditions',
+    cr: 'CR No.',
     rights: 'All rights reserved.',
     language: 'Language',
   },

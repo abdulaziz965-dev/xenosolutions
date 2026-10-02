@@ -23,7 +23,9 @@ export default function LanguagePicker({ ctx, isHome }: { ctx: LangContext; isHo
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    if (ready && saved === null && !isBot()) {
+        // No popup inside the phone preview (the site shown inside its own hero)
+    const insideFrame = window.self !== window.top
+    if (ready && saved === null && !isBot() && !insideFrame) {
       setSuggested(suggestLang())
       setShow(true)
     } else {

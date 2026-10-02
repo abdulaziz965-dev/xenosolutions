@@ -51,7 +51,7 @@ export default function Footer({ ctx }: { ctx: LangContext }) {
         <LanguageLinks ctx={ctx} className="footer-langs" label={t.footer.language} />
       </div>
       <div className="container footer-bottom">
-        © {new Date().getFullYear()} Xenosys Solutions. {t.footer.rights}
+        © {new Date().getFullYear()} Xenosys Solutions. {t.footer.cr} <bdi dir="ltr">{SITE.crNumber}</bdi>. {t.footer.rights}
       </div>
     </footer>
   )

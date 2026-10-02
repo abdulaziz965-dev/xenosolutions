@@ -6,8 +6,7 @@ export const SITE = {
   phoneDisplay: '+974 7064 3918',
   phoneHref: 'tel:+97470643918',
   mapsUrl: 'https://maps.app.goo.gl/1AyqAc2eTGRFqW8B7',
-  // Website shown inside the phone in the hero (desktop only). Must allow being shown in an iframe.
-  demoUrl: 'https://xeno0340.github.io/sneaker-store-stryde/',
+  crNumber: '250039', // Commercial Registration number (Qatar)
   // Example free subdomain shown in the QR 99 offer (client sites hosted on Cloudflare Pages).
   subdomainExample: 'yourshop.pages.dev',
   emails: {
