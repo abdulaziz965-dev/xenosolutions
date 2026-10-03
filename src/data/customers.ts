@@ -5,8 +5,9 @@
 export type CustomerType =
   | 'marble'
   | 'contracting'
-  | 'garage'
   | 'design'
+  | 'flooring'
+  | 'garage'
   | 'sports'
   | 'salon'
   | 'laundry'
@@ -37,18 +38,25 @@ export const customers: Customer[] = [
     url: 'https://bilal-for-building-maintenance-cont.vercel.app/',
   },
   {
-    id: 'al-juzraa',
-    name: 'Al Juzraa Auto',
-    initials: 'AJ',
-    type: 'garage',
-    url: 'https://al-juzraa.vercel.app/',
-  },
-  {
     id: 'propert',
     name: 'Propert Design Trading & Contracting',
     initials: 'PD',
     type: 'design',
     url: 'https://propert-trading.vercel.app/',
+  },
+  {
+    id: 'involved',
+    name: 'Involved Trading',
+    initials: 'IT',
+    type: 'flooring',
+    url: 'https://involved-trading.vercel.app/',
+  },
+  {
+    id: 'al-juzraa',
+    name: 'Al Juzraa Auto',
+    initials: 'AJ',
+    type: 'garage',
+    url: 'https://al-juzraa.vercel.app/',
   },
   {
     id: 'sk-mohan',

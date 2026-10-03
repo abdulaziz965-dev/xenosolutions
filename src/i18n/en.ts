@@ -96,8 +96,9 @@ const en = {
     types: {
       marble: 'Marble works',
       contracting: 'Building maintenance and contracting',
-      garage: 'Car repair garage',
       design: 'Aluminium, glass, marble and UPVC',
+      flooring: 'Flooring supply and installation',
+      garage: 'Car repair garage',
       sports: 'Skating for kids',
       salon: 'Premium ladies beauty salon',
       laundry: 'Laundry with free home delivery',
