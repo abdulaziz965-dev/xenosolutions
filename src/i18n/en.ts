@@ -94,8 +94,9 @@ const en = {
     likeThis: 'I want one like this',
     newTab: 'opens in a new tab',
     types: {
-      hospitality: 'Contracting and hospitality services',
+      marble: 'Marble works',
       contracting: 'Building maintenance and contracting',
+      garage: 'Car repair garage',
       design: 'Aluminium, glass, marble and UPVC',
       sports: 'Skating for kids',
       salon: 'Premium ladies beauty salon',
