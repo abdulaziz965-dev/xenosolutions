@@ -120,6 +120,12 @@ export default function Hero({ ctx }: { ctx: LangContext }) {
       <div className="container hero-grid">
         <div className="hero-copy">
           <LanguageStrip ctx={ctx} />
+                    <p className="hero-cr">
+            <Icon name="check" size={14} />
+            <span>
+              {t.hero.registered} <bdi dir="ltr">{SITE.crNumber}</bdi>
+            </span>
+          </p>
           <h1 id="hero-title">{t.hero.title}</h1>
           <p className="hero-lede">{t.hero.lede}</p>
           <div className="hero-actions">
@@ -131,14 +137,10 @@ export default function Hero({ ctx }: { ctx: LangContext }) {
               {t.hero.seeWork}
             </Link>
           </div>
-          <ul className="hero-points">
+                    <ul className="hero-points">
             {t.hero.points.map((point) => (
               <li key={point}><Icon name="check" />{point}</li>
             ))}
-            <li>
-              <Icon name="check" />
-              {t.hero.registered} <bdi dir="ltr">{SITE.crNumber}</bdi>
-            </li>
           </ul>
         </div>
          <PhoneMock t={t} src={home} />
