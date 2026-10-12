@@ -870,3 +870,69 @@ body.picker-open .wa-bar { display: none; }
 .hero-cr span { line-height: 1.35; }
 .hero-cr bdi { font-weight: 700; letter-spacing: 0.03em; white-space: nowrap; }
 @media (max-width: 520px) { .hero-cr { font-size: 0.85rem; } }
+/* ---------- Customers: category filters + compact list (15 businesses) ---------- */
+.customer-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.filter-chip {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  padding-block: 6px; padding-inline: 14px 8px; border: 1.5px solid var(--line); border-radius: 999px;
+  background: #fff; color: var(--ink); font-size: 0.95rem; font-weight: 500; cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.filter-chip .icon { color: var(--maroon); }
+.filter-chip:hover { border-color: var(--maroon); }
+.filter-count {
+  min-width: 26px; padding: 2px 8px; border-radius: 999px;
+  background: var(--pearl); font-size: 0.8rem; font-weight: 600; text-align: center;
+}
+.filter-chip[aria-pressed='true'] { background: var(--maroon); border-color: var(--maroon); color: #fff; }
+.filter-chip[aria-pressed='true'] .icon { color: #fff; }
+.filter-chip[aria-pressed='true'] .filter-count { background: rgba(255, 255, 255, 0.22); color: #fff; }
+/* Small phones: tighter buttons so they sit two per row instead of one */
+@media (max-width: 480px) {
+  .customer-filters { gap: 6px; }
+  .filter-chip { gap: 6px; min-height: 40px; padding-inline: 11px 6px; font-size: 0.85rem; }
+  .filter-chip .icon { display: none; }
+  .filter-count { min-width: 22px; padding: 1px 6px; font-size: 0.75rem; }
+}
+
+/* The list: thin lines between rows, two columns on wide screens */
+.customer-list { display: grid; gap: 1px; background: var(--line); }
+.customer-list .customer {
+  grid-template-columns: 44px minmax(0, 1fr) auto; gap: 4px 12px; align-items: center;
+  padding: 14px 16px; background: #fff; border-top: 0;
+}
+.customer-list .customer:hover { background: #fcf8f9; }
+.customer-list .customer-mono,
+.customer-list .customer-thumb { width: 44px; height: 44px; border-radius: 12px; font-size: 0.85rem; }
+.customer-list .customer-info h3 { font-size: 1rem; line-height: 1.3; }
+.customer-list .customer-info p { margin-top: 3px; font-size: 0.88rem; line-height: 1.4; }
+.customer-list .customer-actions {
+  grid-column: auto; display: flex; flex-direction: column; gap: 6px; justify-content: center;
+}
+
+/* Phones: two small round buttons beside the name */
+.act-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  width: 40px; height: 40px; border: 1.5px solid var(--line); border-radius: 50%;
+  background: #fff; color: var(--ink); font-size: 0.9rem; font-weight: 600; text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.act-btn:hover { border-color: var(--maroon); color: var(--maroon); }
+.act-btn-wa { border-color: transparent; background: #e6f4ec; color: var(--wa-deep); }
+.act-btn-wa:hover { border-color: transparent; background: var(--wa); color: #fff; }
+.act-label {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* Wide screens: two columns, labelled buttons under each business */
+@media (min-width: 900px) {
+  .customer-list { grid-template-columns: 1fr 1fr; }
+  .customer-list .customer:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .customer-list .customer { grid-template-columns: 52px minmax(0, 1fr); align-items: start; padding: 18px 22px; }
+  .customer-list .customer-mono,
+  .customer-list .customer-thumb { width: 52px; height: 52px; font-size: 0.95rem; }
+  .customer-list .customer-actions { grid-column: 2; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; margin-top: 8px; }
+  .act-btn { width: auto; height: 38px; padding-inline: 14px; border-radius: 999px; }
+  .act-label { position: static; width: auto; height: auto; margin: 0; overflow: visible; clip: auto; }
+}

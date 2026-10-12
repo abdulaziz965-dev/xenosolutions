@@ -4,7 +4,7 @@ import type { ReactElement } from 'react'
 export type IconName =
   | 'whatsapp' | 'phone' | 'mail' | 'pin' | 'globe' | 'web' | 'server' | 'wrench'
   | 'search' | 'pos' | 'megaphone' | 'external' | 'check' | 'store' | 'back' | 'menu' | 'close'
-  | 'snowflake' | 'droplet' | 'bolt' | 'building' | 'shirt' | 'scissors' | 'smartphone' | 'car' | 'home' | 'rocket'
+  | 'snowflake' | 'droplet' | 'bolt' | 'building' | 'shirt' | 'scissors' | 'smartphone' | 'car' | 'home' | 'rocket' | 'grid' | 'ball'
 
 const PATHS: Record<IconName, ReactElement> = {
   whatsapp: (
@@ -115,6 +115,21 @@ const PATHS: Record<IconName, ReactElement> = {
     </>
   ),
   home: <path d="M3.5 11L12 4l8.5 7v9a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z" />,
+  grid: (
+    <>
+      <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" />
+      <rect x="13.5" y="3.5" width="7" height="7" rx="1.5" />
+      <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
+      <rect x="13.5" y="13.5" width="7" height="7" rx="1.5" />
+    </>
+  ),
+  ball: (
+    <>
+      <circle cx="12" cy="12" r="9.5" />
+      <path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z" />
+      <path d="M12 2.5v5M16 10.4l4.8-1.6M14.5 15.1l3 4M9.5 15.1l-3 4M8 10.4L3.2 8.8" />
+    </>
+  ),
   rocket: (
     <>
       <path d="M12 2.5c3 2.2 4.8 5.8 4.8 9.8L15 15H9l-1.8-2.7C7.2 8.3 9 4.7 12 2.5z" />
