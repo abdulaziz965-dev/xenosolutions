@@ -14,3 +14,13 @@
 /gm-message/       /gm-message       301
 /privacy-policy/   /privacy-policy   301
 /terms/            /terms            301
+/about/            /about            301
+
+# About page in other languages
+/en/about          /about            301
+/ar/about/         /ar/about         301
+/hi/about/         /hi/about         301
+/ur/about/         /ur/about         301
+/ml/about/         /ml/about         301
+/bn/about/         /bn/about         301
+/ne/about/         /ne/about         301

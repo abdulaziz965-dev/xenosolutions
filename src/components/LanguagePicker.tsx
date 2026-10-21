@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useContext, useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AVAILABLE, getLang, homePath, suggestLang, type LangCode, type LangContext } from '../i18n'
+import { AVAILABLE, getLang, suggestLang, type LangCode, type LangContext } from '../i18n'
 import { useLanguagePreference } from '../i18n/LanguageProvider'
 import Icon from './Icon'
+import { LangPathContext } from './LanguageMenu'
 
 /** Search engines and link-preview bots never see the popup; they read the page itself. */
 function isBot() {
@@ -15,15 +16,16 @@ function isBot() {
  * First-visit language popup. Appears once; the choice is saved on the visitor's device.
  * Closing it without choosing keeps the language of the page they are on.
  */
-export default function LanguagePicker({ ctx, isHome }: { ctx: LangContext; isHome: boolean }) {
+export default function LanguagePicker({ ctx, switchPage }: { ctx: LangContext; switchPage: boolean }) {
   const { saved, ready, choose } = useLanguagePreference()
+  const pathFor = useContext(LangPathContext)
   const navigate = useNavigate()
   const dialogRef = useRef<HTMLDivElement>(null)
   const [suggested, setSuggested] = useState<LangCode>(ctx.lang)
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-        // No popup inside the phone preview (the site shown inside its own hero)
+    // No popup inside the phone preview (the site shown inside its own hero) or inside other sites' frames
     const insideFrame = window.self !== window.top
     if (ready && saved === null && !isBot() && !insideFrame) {
       setSuggested(suggestLang())
@@ -45,7 +47,7 @@ export default function LanguagePicker({ ctx, isHome }: { ctx: LangContext; isHo
 
   function pick(code: LangCode) {
     choose(code)
-    if (isHome && code !== ctx.lang) navigate(homePath(code))
+    if (switchPage && code !== ctx.lang) navigate(pathFor(code))
   }
 
   function dismiss() {

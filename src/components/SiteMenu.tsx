@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { whatsappLink } from '../data/site'
-import type { LangContext } from '../i18n'
+import { aboutPath, type LangContext } from '../i18n'
 import Icon from './Icon'
 
 /**
@@ -45,6 +45,7 @@ export default function SiteMenu({ ctx }: { ctx: LangContext }) {
   ] as const
 
   const pages = [
+    [aboutPath(ctx.lang), t.about.nav],
     ['/gm-message', t.footer.gm],
     ['/privacy-policy', t.footer.privacy],
     ['/terms', t.footer.terms],

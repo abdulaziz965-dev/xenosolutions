@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { SITE, whatsappLink } from '../data/site'
-import type { LangContext } from '../i18n'
+import { aboutPath, type LangContext } from '../i18n'
 import { LanguageLinks } from './LanguageMenu'
 
 export default function Footer({ ctx }: { ctx: LangContext }) {
@@ -25,6 +25,7 @@ export default function Footer({ ctx }: { ctx: LangContext }) {
             <li><Link to={{ pathname: home, hash: '#offer' }}>{t.offer.title}</Link></li>
             <li><Link to={{ pathname: home, hash: '#services' }}>{t.nav.services}</Link></li>
             <li><Link to={{ pathname: home, hash: '#customers' }}>{t.nav.customers}</Link></li>
+            <li><Link to={aboutPath(ctx.lang)}>{t.about.nav}</Link></li>
             <li><Link to="/gm-message">{t.footer.gm}</Link></li>
             <li><Link to="/privacy-policy">{t.footer.privacy}</Link></li>
             <li><Link to="/terms">{t.footer.terms}</Link></li>

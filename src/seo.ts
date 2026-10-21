@@ -1,5 +1,5 @@
 import { SITE } from './data/site'
-import { AVAILABLE, DEFAULT_LANG, getLang, homePath, type LangCode } from './i18n'
+import { aboutPath, AVAILABLE, DEFAULT_LANG, getLang, homePath, type LangCode } from './i18n'
 
 /*
   Everything Google, WhatsApp previews and other bots read about each page.
@@ -33,6 +33,7 @@ type PageKey = keyof typeof PAGE_META
 
 export type RouteInfo =
   | { path: string; file: string; kind: 'home'; lang: LangCode }
+  | { path: string; file: string; kind: 'about'; lang: LangCode }
   | { path: string; file: string; kind: 'page'; page: PageKey }
   | { path: string; file: string; kind: 'notFound' }
 
@@ -43,6 +44,13 @@ export const ROUTES: RouteInfo[] = [
     // Cloudflare Pages serves ar.html at /ar (no trailing slash)
     file: language.code === DEFAULT_LANG ? 'index.html' : `${language.code}.html`,
     kind: 'home',
+    lang: language.code,
+  })),
+  ...AVAILABLE.map((language): RouteInfo => ({
+    path: aboutPath(language.code),
+    // /about -> about.html, /ar/about -> ar/about.html
+    file: language.code === DEFAULT_LANG ? 'about.html' : `${language.code}/about.html`,
+    kind: 'about',
     lang: language.code,
   })),
   { path: '/gm-message', file: 'gm-message.html', kind: 'page', page: 'gm' },
@@ -90,7 +98,7 @@ function businessData(lang: LangCode) {
       identifier: { '@type': 'PropertyValue', propertyID: 'Qatar Commercial Registration', value: SITE.crNumber },
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Icono Business Center, Holiday Villa Hotel, Muntaza',
+        streetAddress: 'Icono View Offices',
         addressLocality: 'Doha',
         addressCountry: 'QA',
       },
@@ -172,6 +180,27 @@ export function headFor(route: RouteInfo) {
     return { head: tags.join('\n    '), lang: route.lang, dir }
   }
 
+  if (route.kind === 'about') {
+    const { t, dir } = getLang(route.lang)
+    const url = absolute(route.path)
+    const tags = [
+      `<title>${escapeAttr(t.about.metaTitle)}</title>`,
+      `<meta name="description" content="${escapeAttr(t.about.metaDescription)}">`,
+      `<meta name="robots" content="index, follow, max-image-preview:large">`,
+      `<link rel="canonical" href="${url}">`,
+      ...AVAILABLE.map((language) => `<link rel="alternate" hreflang="${language.code}" href="${absolute(aboutPath(language.code))}">`),
+      `<link rel="alternate" hreflang="x-default" href="${absolute('/about')}">`,
+      ...sharedTags({
+        title: t.about.metaTitle,
+        description: t.about.metaDescription,
+        url,
+        locale: OG_LOCALE[route.lang],
+        altLocales: AVAILABLE.filter((language) => language.code !== route.lang).map((language) => OG_LOCALE[language.code]),
+      }),
+    ]
+    return { head: tags.join('\n    '), lang: route.lang, dir }
+  }
+
   if (route.kind === 'page') {
     const meta = PAGE_META[route.page]
     const url = absolute(route.path)
@@ -203,8 +232,15 @@ export function sitemapXml(lastmod: string) {
     `    <xhtml:link rel="alternate" hreflang="x-default" href="${absolute('/')}"/>`,
   ].join('\n')
 
+  const aboutAlternates = [
+    ...AVAILABLE.map(
+      (language) => `    <xhtml:link rel="alternate" hreflang="${language.code}" href="${absolute(aboutPath(language.code))}"/>`,
+    ),
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${absolute('/about')}"/>`,
+  ].join('\n')
+
   const urls = ROUTES.filter((route) => route.kind !== 'notFound').map((route) => {
-    const extra = route.kind === 'home' ? `\n${alternates}` : ''
+    const extra = route.kind === 'home' ? `\n${alternates}` : route.kind === 'about' ? `\n${aboutAlternates}` : ''
     return `  <url>\n    <loc>${absolute(route.path)}</loc>\n    <lastmod>${lastmod}</lastmod>${extra}\n  </url>`
   })
 

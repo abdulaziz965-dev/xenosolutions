@@ -8,6 +8,12 @@
 - Commercial Registration (CR): 250039
 - Languages on the website: English, Arabic, Hindi, Urdu, Malayalam, Bengali, Nepali
 
+## About
+
+Vision: to give small and medium businesses the same digital advantage as large corporations, at a price they can afford.
+
+Flagship services: QR 99 Website (a business online within 3 days, plus its Google Business Profile updated) and QR 50 Video Ad on Meta (a short, professionally edited video advert for Facebook and Instagram).
+
 ## Services
 
 - Website design and development (mobile-friendly)
@@ -19,7 +25,7 @@
 
 ## Startup Support Package
 
-QR 99 for a complete website for 1 year: free subdomain, free hosting for 1 year, and professional website design and development. Renewal after the first year is agreed separately with each client. An independent offer from Xenosys Solutions, not a government programme. 
+QR 99 for a complete website for 1 year: free subdomain, free hosting for 1 year, and professional website design and development. Renewal after the first year is agreed separately with each client. An independent offer from Xenosys Solutions, not a government programme.
 
 ## Pages
 
@@ -30,6 +36,7 @@ QR 99 for a complete website for 1 year: free subdomain, free hosting for 1 year
 - [Malayalam](https://www.xenosysweb.com/ml)
 - [Bengali](https://www.xenosysweb.com/bn)
 - [Nepali](https://www.xenosysweb.com/ne)
+- [About us](https://www.xenosysweb.com/about)
 - [Message from the General Manager](https://www.xenosysweb.com/gm-message)
 - [Privacy policy](https://www.xenosysweb.com/privacy-policy)
 - [Terms and conditions](https://www.xenosysweb.com/terms)

@@ -9,6 +9,7 @@ import Manager from '../sections/Manager'
 import Offer from '../sections/Offer'
 import Process from '../sections/Process'
 import Services from '../sections/Services'
+import VisionStrip from '../sections/VisionStrip'
 
 export default function Home({ ctx }: { ctx: LangContext }) {
   useDocumentMeta({ title: ctx.t.meta.title, description: ctx.t.meta.description })
@@ -20,6 +21,7 @@ export default function Home({ ctx }: { ctx: LangContext }) {
       <Services t={ctx.t} />
       <Customers t={ctx.t} />
       <Process t={ctx.t} />
+      <VisionStrip ctx={ctx} />
       <Manager t={ctx.t} />
       <Contact t={ctx.t} lang={ctx.lang} />
     </Shell>

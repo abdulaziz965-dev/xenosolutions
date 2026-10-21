@@ -44,6 +44,11 @@ export function homePath(lang: LangCode) {
   return lang === DEFAULT_LANG ? '/' : `/${lang}`
 }
 
+/** About page address for a language: /about (English), /ar/about, /hi/about ... */
+export function aboutPath(lang: LangCode) {
+  return lang === DEFAULT_LANG ? '/about' : `/${lang}/about`
+}
+
 export function getLang(code: LangCode) {
   const language = LANGUAGES.find((item) => item.code === code) ?? LANGUAGES[0]
   return {

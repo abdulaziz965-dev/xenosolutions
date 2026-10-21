@@ -2,6 +2,7 @@ import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 import ScrollManager from './components/ScrollManager'
 import { DEFAULT_LANG, getLang, homePath, isAvailableLang } from './i18n'
 import { LanguageProvider, useLanguagePreference } from './i18n/LanguageProvider'
+import About from './pages/About'
 import GMMessage from './pages/GMMessage'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
@@ -27,16 +28,26 @@ function LanguageHome() {
  * All pages. The router around it differs: BrowserRouter in the browser (main.tsx),
  * StaticRouter when pages are pre-rendered at build time (entry-server.tsx).
  */
+/** /ar/about, /hi/about ... show the About page in that language. */
+function LanguageAbout() {
+  const { lang } = useParams()
+  if (lang === DEFAULT_LANG) return <Navigate to="/about" replace />
+  if (!isAvailableLang(lang)) return <NotFound />
+  return <About ctx={getLang(lang)} />
+}
+
 export function AppRoutes() {
   return (
     <LanguageProvider>
       <ScrollManager />
       <Routes>
         <Route path="/" element={<RootHome />} />
+        <Route path="/about" element={<About ctx={getLang(DEFAULT_LANG)} />} />
         <Route path="/gm-message" element={<GMMessage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/:lang" element={<LanguageHome />} />
+        <Route path="/:lang/about" element={<LanguageAbout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </LanguageProvider>

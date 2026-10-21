@@ -6,7 +6,7 @@
     <!--seo-start-->
     <!-- Replaced for every page at build time by scripts/prerender.mjs (title, description, canonical, languages, share preview, business details). -->
     <title>Xenosys Solutions | Website design in Doha, Qatar</title>
-    <meta name="description" content="Professional websites for small businesses in Qatar. Startup Support Package: a complete website with hosting and subdomain for 1 year, QR 99. Chat with us on WhatsApp." />
+    <meta name="description" content="Professional websites for small businesses in Qatar. A complete website with hosting and subdomain for 1 year: QR 99. Chat with us on WhatsApp." />
     <!--seo-end-->
     <meta name="theme-color" content="#8A1538" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -21,8 +21,9 @@
       // Returning visitors: open their saved language straight away, before the page draws (no flash of English).
       try {
         var saved = localStorage.getItem('xenosys-lang')
-        if (location.pathname === '/' && /^(ar|hi|ur|ml|bn|ne)$/.test(saved || '')) {
-          location.replace('/' + saved + location.search + location.hash)
+        if (/^(ar|hi|ur|ml|bn|ne)$/.test(saved || '')) {
+          if (location.pathname === '/') location.replace('/' + saved + location.search + location.hash)
+          else if (location.pathname === '/about') location.replace('/' + saved + '/about' + location.search + location.hash)
         }
       } catch (e) {}
     </script>
