@@ -2,7 +2,7 @@ import Icon, { type IconName } from '../components/Icon'
 import SectionHead from '../components/SectionHead'
 import type { Dict } from '../i18n'
 
-const ICONS: IconName[] = ['web', 'server', 'wrench', 'search', 'pos', 'megaphone']
+const ICONS: IconName[] = ['web', 'server', 'wrench', 'search']
 
 export default function Services({ t }: { t: Dict }) {
   return (

@@ -15,7 +15,7 @@ export default function Terms() {
       <article className="container doc">
         <Link className="back-link" to={ctx.home}><Icon name="back" size={18} />Back to home</Link>
         <h1>Terms and conditions</h1>
-        <p className="updated">Last updated: October 2026</p>
+        <p className="updated">Last updated: November 2026</p>
         <p>
           This website is operated by Xenosys Solutions, a company registered in Qatar under Commercial Registration
           (CR) No. {SITE.crNumber}, with offices at Icono View Offices, Doha.
@@ -26,8 +26,8 @@ export default function Terms() {
 
         <h2>Our services</h2>
         <p>
-          Xenosys Solutions provides website design and development, hosting, debugging, search engine optimisation,
-          custom ERP and POS software, digital marketing, consulting and related digital services.
+          Xenosys Solutions provides website design and development, website hosting, website fixes and updates,
+          Google search setup and related website services.
         </p>
 
         <h2>Intellectual property</h2>

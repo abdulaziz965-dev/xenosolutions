@@ -83,8 +83,6 @@ const en = {
       { title: 'Hosting and domain', text: 'We keep your website online, fast and secure with SSL.' },
       { title: 'Fixes and updates', text: 'Website broken or slow? We find the problem and fix it.' },
       { title: 'Google search setup', text: 'We set up your website and business details for Google search.' },
-      { title: 'Billing and stock software', text: 'Custom ERP with cashier POS: sales and inventory management.' },
-      { title: 'Digital marketing', text: 'We plan and run online campaigns for your business.' },
     ],
   },
   customers: {

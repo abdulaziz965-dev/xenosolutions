@@ -20,8 +20,6 @@ Flagship services: QR 99 Website (a business online within 3 days, plus its Goog
 - Hosting and domain setup
 - Website fixes and updates
 - Google search setup
-- Custom ERP with POS (billing and stock)
-- Digital marketing
 
 ## Startup Support Package
 
